@@ -1,0 +1,32 @@
+
+{% load static %}
+{% block styling %}
+    <link rel="stylesheet" href="{% static "peer_system/landing-page-navbar.css" %}">
+{% endblock styling %}
+
+
+
+<section class="nav-bar">
+    <nav>
+        <div class="first-nav">
+            <h1>HASHRY</h1> 
+        </div>
+
+        <div class="second-nav">
+            <ul>
+                <li> <a href="https://x.com">Discover</a></li>
+                <li><a href="">Marketplace</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="{% url "profile" %}">Profile</a></li>
+            </ul>   
+        </div>
+        <div class="third-nav">
+            <div class="login">
+                <a href="{% url "login" %}"><button>Log in</button></a>
+            </div>
+            <div class="signup">
+                <a href=""><button>Sign up</button></a>
+            </div>
+        </div>
+    </nav>
+</section>
