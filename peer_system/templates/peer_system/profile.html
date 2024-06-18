@@ -4,13 +4,5 @@
 {% block styling %}<link rel="stylesheet" href="{% static "peer_system/profile.css" %}">{% endblock styling %}
 {% block content %}
     <h2>PROFILE</h2>
-    <form method = "post">
-        {% csrf_token %}
-        {% for form in forms  %}
-            <br>
-            {{form.label}}
-            <br>
-            {{form}}
-        {% endfor %}
-    </form>
+    
 {% endblock content %}

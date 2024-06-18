@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{profile.username}}{% endblock title %}
+{% block styling %}<link rel="stylesheet" href="{% static "peer_system/profile.css" %}">{% endblock styling %}
+{% block content %}
+    <h2>PROFILE</h2>
+    <h3>USERNAME</h3>
+    <p>{{profile.username}}</p>
+    <h3>BIO</h3>
+    <p>{{profile.bio_description}}</p>
+    <h3>Location</h3>
+    <p>{{profile.location}}</p>
+
+{% endblock content %}
