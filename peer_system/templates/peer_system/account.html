@@ -3,6 +3,7 @@
 {% block title %}{{profile.username}}{% endblock title %}
 {% block styling %}<link rel="stylesheet" href="{% static "peer_system/profile.css" %}">{% endblock styling %}
 {% block content %}
+    <h2><a href="{% url "starting-page"%}">HASH</a></h2>
     <h2>PROFILE</h2>
     <h3>USERNAME</h3>
     <p>{{profile.username}}</p>
