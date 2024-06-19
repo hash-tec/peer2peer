@@ -18,7 +18,7 @@
                 <li> <a href="https://x.com">Discover</a></li>
                 <li><a href="">Marketplace</a></li>
                 <li><a href="">Home</a></li>
-                <li><a href="{% url "profile" %}">Profile</a></li>
+                <li><a href="{% url "profile" %}">Profile {{profile.username}}</a></li>
             </ul>   
         </div>
         <div class="third-nav">
@@ -26,7 +26,7 @@
                 <a href="{% url "login" %}"><button>Log in</button></a>
             </div>
             <div class="signup">
-                <a href=""><button>Sign up</button></a>
+                <a href="{% url "sign-up"%}"><button>Sign up</button></a>
             </div>
         </div>
     </nav>

@@ -11,7 +11,7 @@ class StartingPageView(TemplateView):
 
     
 
-class CreatingView(TemplateView):
+class SignUpView(TemplateView):
     template_name = "peer_system/create.html"
 
 class LoginView(TemplateView):
