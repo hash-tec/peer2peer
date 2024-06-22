@@ -7,15 +7,15 @@ from.models import Profile
 
 # Create your views here.
 class StartingPageView(TemplateView):
-    template_name = "peer_system/starting-page.html"
+    template_name = "user_management/starting-page.html"
 
     
 
 class SignUpView(TemplateView):
-    template_name = "peer_system/create.html"
+    template_name = "user_management/create.html"
 
 class LoginView(TemplateView):
-    template_name = "peer_system/login.html"
+    template_name = "user_management/login.html"
 
 class ProfileView(TemplateView):
     template_name = "peer_system/profile.html"
@@ -27,7 +27,7 @@ class ProfileView(TemplateView):
     
     
 class AccountView(TemplateView):
-    template_name = "peer_system/account.html"
+    template_name = "user_management/account.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         profile_id = kwargs['username']

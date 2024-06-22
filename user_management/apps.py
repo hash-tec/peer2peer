@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PeerSystemConfig(AppConfig):
+class UserManagementConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'peer_system'
+    name = 'user_management'
