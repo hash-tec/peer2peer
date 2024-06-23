@@ -18,7 +18,7 @@ class LoginView(TemplateView):
     template_name = "user_management/login.html"
 
 class ProfileView(TemplateView):
-    template_name = "peer_system/profile.html"
+    template_name = "user_management/profile.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
