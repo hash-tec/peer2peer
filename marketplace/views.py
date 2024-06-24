@@ -9,6 +9,11 @@ from marketplace.form import CreateListingForm
 # Create your views here.
 class AvailableListingView(TemplateView):
     template_name = "marketplace/available-listing.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["items_created"] = CreateListing.objects.all()
+        return context
+    
 
     
 
