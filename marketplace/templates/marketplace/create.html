@@ -3,16 +3,17 @@
 {% block title %} Create{% endblock title%}
 {% block styling %}<link rel="stylesheet" href="{% static "marketplace/create.css" %}">{% endblock styling %}
 {% block content %}
-    <form method="post">
+    <form method="post" >
         {% csrf_token %}
         {% for field in form  %}
-            <br>
-            {{field.label}}
-            <br>
-            {{field}}
-
+        <div class="createform" >
+            <label class="input-label"><h3>{{field.label}}</h3></label>
+            <div class="input-field">{{field}}</div>
+           <div class="erro-message"> {{field.errors}}</div>
+        </div>
         {% endfor %}
         <button type="submit">Create</button>
     </form>
+    <h1>W</h1>
 {% endblock content %}
 <h1>jsdodfjdf</h1>

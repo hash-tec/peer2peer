@@ -1,4 +1,16 @@
 body{
     background-color: #001233;
+    font-family: "Crimson Text", serif;
     color: #a080e1;
+}
+
+.createform{
+   background-color: aquamarine;
+   width: 70%;
+   margin-left: 15%;
+}
+
+.input-field{
+    width: 180px;
+
 }
