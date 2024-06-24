@@ -2,5 +2,16 @@
 {% load static %}
 {% block title %} Create{% endblock title%}
 {% block styling %}<link rel="stylesheet" href="{% static "marketplace/create.css" %}">{% endblock styling %}
-{% block content %}{% endblock content %}
+{% block content %}
+    <form>
+        {% csrf_token %}
+        {% for field in form  %}
+            <br>
+            {{field.label}}
+            <br>
+            {{field}}
+        {% endfor %}
+        <button type="submit">Create</button>
+    </form>
+{% endblock content %}
 <h1>jsdodfjdf</h1>
