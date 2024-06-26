@@ -1,16 +1,71 @@
 body{
     background-color: #001233;
-    font-family: "Crimson Text", serif;
-    color: #a080e1;
+    max-height: 100vh;
+    color: #001233;
 }
 
-.createform{
-   background-color: aquamarine;
-   width: 70%;
-   margin-left: 15%;
+.styled-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
-.input-field{
-    width: 180px;
+.form-field {
+    margin-bottom: 15px;
 
 }
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #CAC0B3;;
+}
+
+.input-container input,
+.input-container select,
+.input-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.error-message {
+    list-style: none;
+    color: #680000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #FF595A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+  .submit-button:hover {
+    background-color:  #001233;
+    color: #CAC0B3;
+    transition: 0.5s;
+    
+  
+  }

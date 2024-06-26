@@ -32,7 +32,7 @@ nav .first-nav{
  }
  .logo-text a{
   text-decoration: none;
-  color: #FF595A; ;
+  color: #FF595A; 
  }
 .hash-text{
   margin-left: 20px;
@@ -64,6 +64,7 @@ nav .second-nav ul li a{
 
 .second-nav ul li a:hover{
   color:  #FF595A;;
+  cursor: pointer;
 }
 
 
@@ -88,6 +89,7 @@ nav .third-nav button{
   background-color:  white;
   color: #FF595A;
   transition: 0.5s;
+  cursor:;
   
 
 }
