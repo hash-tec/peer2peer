@@ -1,6 +1,7 @@
 body{
     background-color: #001233;
     color: #a080e1;
+    margin: 30px;
 }
 button{
     background-color: #FF595A; 
@@ -14,6 +15,30 @@ button{
    font-size: 20px;
    font-weight: 900;
 }
+.listing-section{
+  
+}
+.mini-section{
+
+    width: 90%;
+    margin: auto;
+}
+.item-section{
+  background-color: #CAC0B3;
+  border-radius: 15px;
+  width:30%;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  
+  display: inline-block;
+}
+.description{
+ 
+  margin-top: -15px;
+  display: flex;
+  margin-right: 75px;
+}
+
 
 :hover button{
     background-color:  white;
