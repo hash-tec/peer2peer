@@ -41,7 +41,7 @@ class ItemDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         detail_key = kwargs["detail"]
-        context["details"] = CreateListing.objects.get(item_name = detail_key)
+        context["details"] = CreateListing.objects.get(slug = detail_key)
         return context
     
 class ThanksView(TemplateView):

@@ -10,7 +10,7 @@
             <div class="mini-section">
                 <div class="item-image"><img src="{{item.image.url}}"/></div>
                 <div class="name">
-                   <a href="{% url "item-details"{{item.item_name}} %}"> <h2>{{item.item_name}}</h2></a>
+                   <a href="{% url "item-details" item.slug %}"> <h2>{{item.item_name}}</h2></a>
                 </div>
                 <div class="description">
                     <P>BRAND:</P>
