@@ -35,6 +35,15 @@ class CreateListingView(TemplateView):
             form.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
+    
+class ItemDetailView(TemplateView):
+    template_name = "marketplace/item-details.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        detail_key = kwargs["detail"]
+        context["details"] = CreateListing.objects.get(item_name = detail_key)
+        return context
+    
 class ThanksView(TemplateView):
     template_name = "marketplace/thanks.html" 
      

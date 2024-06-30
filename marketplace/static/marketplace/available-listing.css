@@ -15,11 +15,9 @@ button{
    font-size: 20px;
    font-weight: 900;
 }
-.listing-section{
-  
-}
-.mini-section{
 
+.mini-section{
+  padding: 20px;
     width: 90%;
     margin: auto;
 }
@@ -46,4 +44,9 @@ button{
     transition: 0.5s;
     
   
+  }
+  .item-image img{
+    width: 150px;
+    height: 150px;
+    background-color: aqua;
   }

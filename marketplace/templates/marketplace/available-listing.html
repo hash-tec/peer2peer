@@ -8,9 +8,9 @@
         {% for item in items_created %}
         <div class="item-section">
             <div class="mini-section">
-                <img src="{{item.image.url}}"/>
+                <div class="item-image"><img src="{{item.image.url}}"/></div>
                 <div class="name">
-                    <h2>{{item.item_name}}</h2>
+                   <a href="{% url "item-details"{{item.item_name}} %}"> <h2>{{item.item_name}}</h2></a>
                 </div>
                 <div class="description">
                     <P>BRAND:</P>
