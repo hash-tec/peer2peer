@@ -30,11 +30,11 @@ class CreateListingView(TemplateView):
     
     
     def post(self, request):
-        form = CreateListingForm(request.POST)
+        form = CreateListingForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
 class ThanksView(TemplateView):
-    template_name = "marketplace/thanks.html"
-    
+    template_name = "marketplace/thanks.html" 
+     
