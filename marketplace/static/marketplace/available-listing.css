@@ -15,23 +15,37 @@ button{
    font-size: 20px;
    font-weight: 900;
 }
+.listing-section{
+  margin-left: 30px;
+  width:90%;
+  background-color: green;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+  
 
+
+.item-section{
+  background-color: white;
+  border-radius: 15px;
+  width:20%;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  
+}
 .mini-section{
   padding: 20px;
     width: 90%;
     margin: auto;
 }
-.item-section{
-  background-color: #CAC0B3;
-  border-radius: 15px;
-  width:30%;
-  margin-left: 30px;
-  margin-bottom: 30px;
-  
-  display: inline-block;
+.mini-section a{
+  text-decoration: none;
+  color: #FF595A;
 }
-.description{
+.brand{
  
+  width: 90%;
   margin-top: -15px;
   display: flex;
   margin-right: 75px;
