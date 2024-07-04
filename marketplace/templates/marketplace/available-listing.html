@@ -11,15 +11,16 @@
                 <div class="mini-section">
                     <div class="item-image"><img src="{{item.image.url}}"/></div>
                     <div class="name">
-                    <a href="{% url "item-details" item.slug %}"> <h2>{{item.item_name}}</h2></a>
+                    <a href="{% url "item-details" item.slug %}"> <p>{{item.item_name}}</p></a>
                     </div>
                     <div class="brand">
                         <P>BRAND: {{item.brand}}</P>
                         <p></p>
                     </div> 
                     <div class="price">
-                        <P>PRICE: $ {{item.price}}</P>
+                        <P>PRICE: ${{item.price}}</P>
                     </div> 
+                    <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a>
                 </div>
             </div>
         {% endfor %}
