@@ -1,6 +1,6 @@
 
 body{
-    color: #CAC0B3;
+    color: #001233;
     font-family: "Poppins", sans-serif;
    
 }
@@ -57,7 +57,7 @@ nav .second-nav ul li {
 
 nav .second-nav ul li a{
   text-decoration: none;
-  color: #CAC0B3;
+  color: #001233;
   font-size: 18.72px;
   font-weight: 900px;
 }
@@ -87,7 +87,7 @@ nav .third-nav button{
 
 .third-nav :hover button{
   background-color:  white;
-  color: #FF595A;
+  color: #001233;
   transition: 0.5s;
   
   

@@ -1,24 +1,11 @@
 body{
-    background-color: #001233;
-    color: #a080e1;
     margin: 30px;
 }
-button{
-    background-color: #FF595A; 
-  color: white;
-   width: 110px;
-   height: 46px;
-   border-radius: 5px;
-   border: none;
-   margin-top: 13px;
-   margin-left: 30px;
-   font-size: 20px;
-   font-weight: 900;
-}
+
 .listing-section{
   margin-left: 30px;
   width:90%;
-  background-color: green;
+
   display: flex;
   justify-content: space-between;
   padding: 50px;
@@ -27,16 +14,16 @@ button{
 
 
 .item-section{
-  background-color: white;
   border-radius: 15px;
-  width:20%;
+  box-shadow: 3px 3px black;
+  width:50%;
   margin-right: 30px;
   margin-bottom: 30px;
   
 }
 .mini-section{
   padding: 20px;
-    width: 90%;
+    
     margin: auto;
 }
 .mini-section a{
@@ -51,10 +38,22 @@ button{
   margin-right: 75px;
 }
 
+button{
+  background-color: #FF595A; 
+  color: white;
+  width: 110px;
+  height: 46px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 13px;
+  margin-left: 80px;
+  font-size: 20px;
+  font-weight: 900;
+}
 
 :hover button{
     background-color:  white;
-    color: #FF595A;
+    color: #001233;
     transition: 0.5s;
     
   
@@ -62,5 +61,5 @@ button{
   .item-image img{
     width: 150px;
     height: 150px;
-    background-color: aqua;
+    
   }
