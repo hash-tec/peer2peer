@@ -12,7 +12,12 @@ class StartingPageView(TemplateView):
     
 
 class SignUpView(TemplateView):
-    template_name = "user_management/create.html"
+    template_name = "user_management/signup.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = ProfileForm()
+        return context
+    
 
 class LoginView(TemplateView):
     template_name = "user_management/login.html"
