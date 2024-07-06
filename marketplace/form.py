@@ -6,4 +6,10 @@ class CreateListingForm(forms.ModelForm):
 
     class Meta:
         model = models.CreateListing
+        labels = {
+            "first_name": "First Name",
+            "last_name":"Last name",
+            "username":"Username",
+            "password":"Password"
+        }
         exclude = ("slug",)

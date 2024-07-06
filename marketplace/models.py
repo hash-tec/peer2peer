@@ -11,5 +11,10 @@ class CreateListing(models.Model):
     date_created = models.DateField(auto_now_add=True)
     image = models.FileField(upload_to="items_images", null=True)
     slug = models.SlugField(default="", null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.item_name)
+        super().save(*args, **kwargs)
     def __str__(self):
         return f"{self.item_name} "

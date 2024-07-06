@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% block styling %}<link rel="stylesheet" href={% static 'marketplace/item-details.css'%}>{% endblock styling %}
 {% block title %}{{details.item_name}}{% endblock title %}
 {% block content %}
-    <div class=""><img src="{{details.image.url}}"/></div>
-    {{details.item_name}}
-    {{details.description}}
+    {% include "marketplace/includes/marketplace-include.html" %}
+    <div class="item-container">
+        <div class="image-container"><img src="{{details.image.url}}"/></div>
+        <div class="text-container">
+            {{details.item_name}}
+            {{details.description}}
+        </div>
+        
+    </div>
+   
 {% endblock content %}
