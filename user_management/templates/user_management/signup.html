@@ -4,13 +4,17 @@
 {% block styling %}<link rel="stylesheet" href="{% static "user_management/signup.css" %}">{% endblock styling %}
 
 {% block content %}
-    <h1>Create an Account</h1>
-    <form method="POST">
-        {% for field in form  %}
-        <div class="form-field">
-            <label class= "form-label">{{field.label}}</label>
-            <div class ="input-container">{{field}}</div>
-        </div>
-        {% endfor %}
-    </form>
+    <div class="text"><h1>Create an Account</h1></div>
+    <div class="form-container">
+        <form method="POST">
+            {% for field in form  %}
+            <div class="form-field">
+                <label class= "form-label">{{field.label}}</label>
+                <div class ="input-container">{{field}}</div>
+            </div>
+            {% endfor %}
+            <button type="submit"> Create</button>
+        </form>
+    </div>
+    
 {% endblock content %}

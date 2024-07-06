@@ -1,3 +1,62 @@
 body{
     color: #FF595A;
 }
+.text{
+    margin-bottom: 30px;
+    margin-left: 60px;
+    margin-top: 20px;
+    font-family: "Playwrite FR Trad", cursive;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.form-container{
+    width: 40%;
+    margin: auto;
+    background-color: #001233;
+    padding: 40px;
+    border-radius:20px;
+}
+
+.form-field{
+    width: 90%;
+    margin: auto;
+}
+
+.input-container{
+    margin-bottom: 15px;
+}
+.input-container input,
+.input-container select,
+.input-container textarea{
+    width: 70%;
+    margin-left: 19%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.form-label{
+    font-size: 23px;
+    margin-left: 19%;
+}
+
+button{
+    background-color: #FF595A; 
+    color: white;
+    width: 110px;
+    height: 46px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 13px;
+    margin-left: 23%;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  
+button:hover{
+    background-color:  white;
+    color: #001233;
+    transition: 0.5s;
+}  
