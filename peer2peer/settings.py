@@ -130,3 +130,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR/"uploads"
 MEDIA_URL = "//"
+AUTH_USER_MODEL = "user_management.CustomerUser"
