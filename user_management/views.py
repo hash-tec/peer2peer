@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
-from .form import ProfileForm
-from.models import Profile
+
 
 
 # Create your views here.
@@ -15,7 +14,7 @@ class SignUpView(TemplateView):
     template_name = "user_management/signup.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = ProfileForm()
+        context["form"] = "hi"
         return context
     
 
@@ -27,7 +26,7 @@ class ProfileView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["profiles"] = Profile.objects.all()
+        context["profiles"] = "hi"
         return context
     
     
@@ -36,6 +35,6 @@ class AccountView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         profile_id = kwargs['username']
-        context["profile"] = Profile.objects.get(username = profile_id)
+        context["profile"] = "hi"
         return context
     

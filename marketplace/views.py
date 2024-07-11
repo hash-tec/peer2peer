@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
-from user_management.models import Profile
 from marketplace.models import CreateListing
 from marketplace.form import CreateListingForm
 
