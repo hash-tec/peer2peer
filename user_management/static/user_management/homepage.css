@@ -1,0 +1,38 @@
+body{
+    font-family: "Poppins", sans-serif;
+}
+.first-container{
+    display: flex;
+    max-height: 100vh;
+}
+
+.first-subcon{
+
+    height: 80vh;
+    margin: auto;
+}
+
+.first-subcon p{
+    font-size: 50px;
+    width: 80%;
+    margin-left: 15%;
+    margin-top: 150px;
+    line-height: 80px;
+    transition: all 0.5s ease-in-out;
+}
+
+.first-subcon p:hover {
+    font-size: 55px; /* Example change on hover */
+    margin-top: 140px;
+}
+
+.second-subcon{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+}
+.second-subcon img{
+    border-radius: 15px;
+    margin: auto;
+    width: 80%;
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+ {% block title %}Hash Marketplace{% endblock title %}
+{% block styling %}
+    <link rel="stylesheet" href="{% static "user_management/starting-page.css" %}">
+{% endblock styling %}
+
+
+{% block content %}
+
+    
+    <div class="first-text">
+        {% include "user_management/includes/homepage-nav.html" %}
+        <div class="first-container">
+            <div class="first-subcon">
+                <p>
+                    We provide the best and the fastest way to get what you need.
+                </p>
+            </div>
+            <div class="second-subcon"> <img src="{% static "user_management/images/smily.jpeg" %}" alt="Peer image"></div>
+        </div>
+    <div class="second-container">
+       
+    </div>
+    </div>
+{% endblock content %}

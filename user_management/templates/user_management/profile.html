@@ -6,8 +6,8 @@
     <h2><a href="{% url "starting-page"%}">HASH</a></h2>
     <h2>PROFILE</h2>
     <ul>
-        {% for profile in profiles %}
+        {% comment %} {% for profile in profiles %}
             <li><a href="{% url "account" profile.username%}">{{profile.username}}</a></li>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
     </ul>
 {% endblock content %}
