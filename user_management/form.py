@@ -6,7 +6,7 @@ class SignupForm(UserCreationForm):
 
     class Meta:
         model = CustomerUser
-        fields =["first_name", "last_name", "username", "password1", "password2"]
+        fields =["first_name", "last_name", "email", "username", "password1", "password2"]
 
 
 class LoginForm(forms.Form):

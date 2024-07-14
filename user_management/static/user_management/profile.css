@@ -1,4 +1,87 @@
-body{
-    color: #5c509c;
-    font-family: "Poppins", sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #001233;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #001233;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.profile-info {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.email {
+    color: #666666;
+    font-size: 14px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: #001233;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.activity {
+    margin: 20px 0;
+}
+
+.activity h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #FF595A;
+}
+
+.activity ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.activity li {
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
 }

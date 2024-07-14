@@ -42,21 +42,23 @@ class LoginView(TemplateView):
     
     def post(self,request):
         form = LoginForm(request.POST)
-        username = form.cleaned_data["username"]
-        password = form.cleaned_data['password']
-        user = authenticate(request=request, username = username, password=password)
-        if user:
-            login(request, user)
-            return redirect("/thank-you")
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data['password']
+            user = authenticate(request=request, username = username, password=password)
+            if user:
+                login(request, user)
+                return redirect("/thank-you")
 class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        current_user=self.request.user
-        context["profiles"] = current_user
+        context["username"] = self.request.user.username
+        context["lastname"] = self.request.user.last_name
+        context["email"] = self.request.user.email
         return context
     
+
     
 class AccountView(TemplateView):
     template_name = "user_management/account.html"
