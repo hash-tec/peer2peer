@@ -17,7 +17,13 @@ class StartingPageView(TemplateView):
         return context
     
 
-    
+class HomepageView(TemplateView):
+    template_name ="user_management/homepage.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["username"] = self.request.user.username
+        return context
+
 
 class SignUpView(TemplateView):
     template_name = "user_management/signup.html"
@@ -48,7 +54,7 @@ class LoginView(TemplateView):
             user = authenticate(request=request, username = username, password=password)
             if user:
                 login(request, user)
-                return render(request, "user_management/homepage.html")
+                return redirect("homepage")
 class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):
@@ -71,6 +77,6 @@ class AccountView(TemplateView):
 class ThanksView(TemplateView):
     template_name = "user_management/thanks.html"
 
-def logout(request):
+def signout(request):
     logout(request)
     return redirect("login")

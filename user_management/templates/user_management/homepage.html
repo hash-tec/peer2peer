@@ -7,9 +7,9 @@
 
 
 {% block content %}
-
+    {{username}}
     
-    <div class="first-text">
+    {% comment %} <div class="first-text">
         {% include "user_management/includes/homepage-nav.html" %}
         <div class="first-container">
             <div class="first-subcon">
@@ -22,5 +22,5 @@
     <div class="second-container">
        
     </div>
-    </div>
+    </div> {% endcomment %}
 {% endblock content %}
