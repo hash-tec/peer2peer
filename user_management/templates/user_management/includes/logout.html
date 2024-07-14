@@ -1,0 +1,7 @@
+{% load static %}
+{% block styling %}
+    <link rel="stylesheet" href="{% static "user_management/logout.css" %}">
+{% endblock styling %}
+<h3>
+    <a href="{% url "logout"%}">Logout</a>
+</h3>

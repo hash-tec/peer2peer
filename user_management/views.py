@@ -48,7 +48,7 @@ class LoginView(TemplateView):
             user = authenticate(request=request, username = username, password=password)
             if user:
                 login(request, user)
-                return redirect("/thank-you")
+                return render(request, "user_management/homepage.html")
 class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):
@@ -70,3 +70,7 @@ class AccountView(TemplateView):
     
 class ThanksView(TemplateView):
     template_name = "user_management/thanks.html"
+
+def logout(request):
+    logout(request)
+    return redirect("login")
