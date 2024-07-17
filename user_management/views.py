@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
-from .form import SignupForm, LoginForm
+from .form import SignupForm, LoginForm, ProfileForm
 from .models import CustomerUser
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -59,12 +59,22 @@ class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["profileform"] = ProfileForm()
         context["verify_user"] = kwargs["username"]
         context["username"] = self.request.user.username
+        context["firstname"] = self.request.user.first_name
         context["lastname"] = self.request.user.last_name
         context["email"] = self.request.user.email
+        context["dob"] = self.request.user.dob
+        context["bio"] = self.request.user.bio
+        context["pfp"] = self.request.user.pfp
         return context
-    
+    def post(self, request):
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('profile', username= self.request.user.username)
+
 
     
 class AccountView(TemplateView):

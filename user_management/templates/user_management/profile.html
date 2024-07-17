@@ -9,9 +9,25 @@
                 <h1>Profile Page</h1>
             </header>
             <div class="profile-info">
+                {% if pfp %}
+                <img src="{{pfp.url}}" alt="Profile Picture" class="profile-picture">
+                {% else %}
                 <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data" class="styled-form" >
+                    {% csrf_token %}
+                    {% for field in profileform  %}
+                        {{field}}
+                    {% endfor %}
+                    <button>Upload</button>
+                </form>
                 <h2 class="username">{{username}}</h2>
                 <p class="email">{{email}}</p>
+                <p class="name">{{firstname}} {{lastname}}</p>
+                <p class="dob">{{dob}} hi</p>
+                <p class="bio">{{bio}}</p>
+            </div>
             </div>
             <div class="stats">
                 <div class="stat">
@@ -48,41 +64,5 @@
     {% include "user_management/includes/logout.html" %}
 {% endblock content %}
 
-<div class="container">
-    <header>
-        <h1>Profile Page</h1>
-    </header>
-    <div class="profile-info">
-        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
-        <h2 class="username">{{username}}</h2>
-        <p class="email">{{email}}</p>
-    </div>
-    <div class="stats">
-        <div class="stat">
-            <h3>Total Sales</h3>
-            <p>123</p>
-        </div>
-        <div class="stat">
-            <h3>Total Purchases</h3>
-            <p>456</p>
-        </div>
-        <div class="stat">
-            <h3>Items Sold</h3>
-            <p>78</p>
-        </div>
-        <div class="stat">
-            <h3>Items Bought</h3>
-            <p>90</p>
-        </div>
-    </div>
-    <div class="activity">
-        <h3>Recent Activity</h3>
-        <ul>
-            <li>Purchased "Item 1" on 01/01/2024</li>
-            <li>Sold "Item 2" on 02/02/2024</li>
-            <li>Purchased "Item 3" on 03/03/2024</li>
-            <li>Sold "Item 4" on 04/04/2024</li>
-        </ul>
-    </div>
-</div>
- the css
+
+ 
