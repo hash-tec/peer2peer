@@ -59,7 +59,7 @@ class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["profileform"] = ProfileForm()
+        context["profileform"] = ProfileForm(instance= self.request.user)
         context["verify_user"] = kwargs["username"]
         context["username"] = self.request.user.username
         context["firstname"] = self.request.user.first_name
@@ -69,14 +69,14 @@ class ProfileView(TemplateView):
         context["bio"] = self.request.user.bio
         context["pfp"] = self.request.user.pfp
         return context
-    def post(self, request):
-        form = ProfileForm(request.POST, request.FILES)
+    def post(self, request, *args, **kwargs):
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        username = kwargs.get('username')
         if form.is_valid():
             form.save()
-        return redirect('profile', username= self.request.user.username)
+        return redirect('profile', username = username)
 
 
-    
 class AccountView(TemplateView):
     template_name = "user_management/account.html"
     def get_context_data(self, **kwargs):
