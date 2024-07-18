@@ -21,6 +21,7 @@
                         <P>PRICE: ${{item.price}}</P>
                     </div> 
                     <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a>
+                    <a href="{% url 'cart' %}"><button class="cart-button"><p>Add to cart</p></button></a>
                 </div>
             </div>
         {% endfor %}
