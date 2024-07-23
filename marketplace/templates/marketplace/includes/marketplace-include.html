@@ -2,11 +2,19 @@
 <link rel="stylesheet" href="{% static "marketplace/marketplace-include.css" %}">
 
 <div class="marketplace-includenav">
-    <p class="logo-text"><a href="{% url "starting-page"%}">HM</a></p>
 
-    <ul>
-        <li><h2><a href="">Cart</a></h2></li>
-        <li><h2><a href="">Order</a></h2></li>
-    </ul>
+    <div class="first">
+        <p class="logo-text"><a href="{% url "starting-page"%}">HM</a></p>
+    </div>
+   
+
+
+    <div class="second">
+        <ul>
+            <li><button><a href="{% url 'cart'%}">Cart</a></button></li>
+            <li><button class="order-button"><a href="">Order</a></button></li>
+        </ul>
+    </div>
+
 
 </div>

@@ -1,15 +1,19 @@
 .marketplace-includenav{
+   
     width: 90%;
     margin: auto;
-    display: flex;
-    margin-left: 30px;
-
 }
 
+.first{
+    display: inline-block;
+
+    margin-right: 25%;
+    width: 30%;
+}
 .logo-text{
     font-size: 20px;
     font-weight: 600;
-   display: inline-block;
+    display: inline-block;
     font-family: "Playwrite FR Trad", cursive;
     font-optical-sizing: auto;
     margin-left: 50px;
@@ -18,23 +22,41 @@
     text-decoration: none;
     color: #FF595A; 
    }
-.marketplace-include{
-
-    background-color: rebeccapurple;
+.second{
+    display: inline-block;
+    width: 40%;
 }
-.marketplace-includenav ul{
+.second ul{
+    margin: 0 0 0 0px;
+    padding-left: 40%;
 
-    margin-left:65%;
+}
+.second ul li{
+    display: inline-block;
+    list-style: none;
 }
 
-.marketplace-includenav ul li a{
+.second ul li a{
     text-decoration: none;
-    color: #001233;
-
+    font-size: 15px;
+    font-weight: 100;
+    color:  #001233;
 }
 
-.marketplace-includenav ul li{
-    display: inline-flex;
-    margin-left: 60px;
-    
+ 
+.second button{
+    width: 80px;
+    height: 28px;
+    border: 2px solid #FF595A;
+    background-color: transparent;
+}
+
+button:hover{
+    background-color:  #FF595A;
+    color: #001233;
+    transition: 0.5s;
+  }
+
+.order-button{
+    margin-left: 0px;
 }
