@@ -20,13 +20,16 @@
                     <div class="price">
                         <P>PRICE: ${{item.price}}</P>
                     </div> 
-                    <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a>
+                    <div class="buttons">
+                        <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a>
         
-                    <form action="{% url 'addcart' item.id %}"method = "post">
-                        {% csrf_token %}
-                        <input type="hidden" name="item_id" value= {{item.id}} >
-                        <button class="cart-button"><p>Add to cart</p></button>
-                    </form>
+                        <form action="{% url 'addcart' item.id %}"method = "post">
+                            {% csrf_token %}
+                            <input type="hidden" name="item_id" value= {{item.id}} >
+                            <button class="cart-button"><p>Add to cart</p></button>
+                        </form>
+                    </div>
+                   
                     
                     {{item.id}}
                 </div>

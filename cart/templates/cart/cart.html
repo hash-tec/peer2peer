@@ -1,32 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Listing {% endblock title %}
-{% block styling %}<link rel="stylesheet" href="{% static "marketplace/available-listing.css" %}">{% endblock styling %}
+{% block title %}Cart{% endblock title %}
+{% block styling %}<link rel="stylesheet" href="{% static "cart/cart.css" %}">{% endblock styling %}
 
 {% block content %}
     <div>{% include "marketplace/includes/marketplace-include.html" %}</div>
     <div class= "listing-section">
+        <div class="cart-text"><h1>Cart</h1></div>
         {% for item in user_cart  %}
+            <hr>
             <div class="item-section">
                 <div class="mini-section">
                     <div class="item-image"><img src="{{item.image.url}}"/></div>
-                    <div class="name">
+                    <div class="item-details">
+                        <div class="name">
+                            <p>{{item.item_name}}</p>
+                        </div>
+                        <div class="brand">
+                            <P>Brand: {{item.brand}}</P>
+                            <p></p>
+                        </div> 
+                       
                     </div>
-                    <div class="brand">
-                        <P>BRAND: {{item.brand}}</P>
-                        <p></p>
-                    </div> 
                     <div class="price">
-                        <P>PRICE: ${{item.price}}</P>
+                        <P>${{item.price}} ✖ {{item.quantity}}</P>
                     </div> 
-                
                     {% comment %} <a href="{% url 'addcart' item.id %}"><button class="cart-button"><p>Add to cart</p></button></a> {% endcomment %}
-                    {{item.id}}
                 </div>
             </div>
         {% endfor %}
-          
+
     </div>
-    <a href="{% url 'create'%}"><button>Create</button></a>
+    {{total_amount.total}}
     {{cart_no}}
 {% endblock content %}

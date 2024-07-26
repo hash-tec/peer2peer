@@ -49,11 +49,12 @@
     height: 28px;
     border: 2px solid #FF595A;
     background-color: transparent;
+    border-radius: 5px;
 }
 
 button:hover{
     background-color:  #FF595A;
-    color: #001233;
+    color: white;
     transition: 0.5s;
   }
 
