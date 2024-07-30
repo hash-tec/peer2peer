@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
 from .form import SignupForm, LoginForm, ProfileForm
 from .models import CustomerUser
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -55,6 +56,10 @@ class LoginView(TemplateView):
             if user:
                 login(request, user)
                 return redirect("homepage")
+            else:
+                form=LoginForm()
+                return render(request, "user_management/login.html", {"form": form, 
+                                                                      "error": "Invalid Credentials!!"})
 class ProfileView(TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):

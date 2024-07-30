@@ -5,32 +5,44 @@
 
 {% block content %}
     <div>{% include "marketplace/includes/marketplace-include.html" %}</div>
-    <div class= "listing-section">
-        <div class="cart-text"><h1>Cart</h1></div>
-        {% for item in user_cart  %}
-            <hr>
-            <div class="item-section">
-                <div class="mini-section">
-                    <div class="item-image"><img src="{{item.image.url}}"/></div>
-                    <div class="item-details">
-                        <div class="name">
-                            <p>{{item.item_name}}</p>
+    <div class="cart-body">
+
+        <div class= "listing-section">
+            <div class="cart-text"><h1>Cart</h1></div>
+            {% for item in user_cart  %}
+                <hr>
+                <div class="item-section">
+                    <div class="mini-section">
+                        <div class="item-image"><img src="{{item.image.url}}"/></div>
+                        <div class="item-details">
+                            <div class="name">
+                                <p>{{item.item_name}}</p>
+                            </div>
+                            <div class="brand">
+                                <P>Brand: {{item.brand}}</P>
+                                <p></p>
+                            </div> 
+                           
                         </div>
-                        <div class="brand">
-                            <P>Brand: {{item.brand}}</P>
-                            <p></p>
+                        <div class="price">
+                            <P>${{item.price}} ✖ {{item.quantity}}</P>
                         </div> 
                        
+                        {% comment %} <a href="{% url 'addcart' item.id %}"><button class="cart-button"><p>Add to cart</p></button></a> {% endcomment %}
                     </div>
-                    <div class="price">
-                        <P>${{item.price}} ✖ {{item.quantity}}</P>
-                    </div> 
-                    {% comment %} <a href="{% url 'addcart' item.id %}"><button class="cart-button"><p>Add to cart</p></button></a> {% endcomment %}
                 </div>
+            {% endfor %}
+        </div>
+        <div class="total-amount"> 
+            <h4>CART SUMMARY</h4>
+            <hr>
+            <div class="second-divcart"><h3>Total</h3>
+                <p>{{total_amount.total}}</p>
             </div>
-        {% endfor %}
-
+                <hr>
+        </div>
+       
     </div>
-    {{total_amount.total}}
+   
     {{cart_no}}
 {% endblock content %}

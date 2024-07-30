@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -32,14 +32,12 @@ class AddCartview(TemplateView):
               except:
                                   cart = CartItem.objects.create(item_name=item.item_name, 
                                          brand=item.brand,
-                                        description=item.description, 
+                                        descriptionhgyfv=item.description, 
                                         price=item.price, 
                                         image=item.image, 
                                         user = cart_user)
 
-              return render(request, "cart/addcart.html", {"item_id":item_id,
-                                                        "item": item,
-                                                        })
+              return redirect('available-listing')
               
 
 
@@ -53,6 +51,7 @@ class CartView(TemplateView):
             context = super().get_context_data(**kwargs)
             user = Cart.objects.get(user = self.request.user)
             context["user_cart"] = CartItem.objects.filter(user = user) 
+            
             total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
             context["total_amount"] = total_amount
             print(total_amount)

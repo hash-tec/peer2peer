@@ -14,14 +14,14 @@
                     <a href="{% url "item-details" item.slug %}"> <p>{{item.item_name}}</p></a>
                     </div>
                     <div class="brand">
-                        <P>BRAND: {{item.brand}}</P>
+                        <P>Brand: {{item.brand}}</P>
                         <p></p>
                     </div> 
                     <div class="price">
-                        <P>PRICE: ${{item.price}}</P>
+                        <P>$ {{item.price}}</P>
                     </div> 
                     <div class="buttons">
-                        <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a>
+                        {% comment %} <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a> {% endcomment %}
         
                         <form action="{% url 'addcart' item.id %}"method = "post">
                             {% csrf_token %}

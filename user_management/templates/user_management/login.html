@@ -7,9 +7,11 @@
     <div class="form-container">
         <form method="POST">
             {% csrf_token %}
+            <p>{{error}}</p>
             {% for field in form  %}
             <div class="form-field">
                 <label class= "form-label">{{field.label}}</label>
+                
                 <div class ="input-container">{{field}}</div>
             </div>
             {% endfor %}

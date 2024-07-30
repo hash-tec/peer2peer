@@ -3,9 +3,9 @@ body{
 }
 .item-container{
     width: 80%;
-    height: 500px;
+    height:400px;
     margin: auto;
-    padding-top: 50px;
+    padding: 0;
 
 }
 .image-container{
@@ -20,3 +20,27 @@ body{
     margin-left: 110px;
 
 }
+.text-container{
+    width: 80%;
+}
+
+.text-container p{
+    font-size: 20px;
+    margin: 15px;
+}
+
+.buy-button {
+    background-color: #001233;
+    width: 20%;
+    margin: auto;
+    margin-left: 7px;
+    font-size: 13px;
+    padding-bottom: 2px;
+  }
+  .buy-button p{
+    margin-top: 12px;
+  }
+  .buy-button:hover{
+    background-color: white;
+    color: #001233;
+  }

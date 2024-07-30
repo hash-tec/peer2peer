@@ -3,14 +3,18 @@ from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
 from marketplace.models import CreateListing
 from marketplace.form import CreateListingForm
+from cart.models import CartItem, Cart
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 class AvailableListingView(TemplateView):
     template_name = "marketplace/available-listing.html"
     def get_context_data(self, **kwargs):
+        user = Cart.objects.get(user =self.request.user)
         context = super().get_context_data(**kwargs)
         context["items_created"] = CreateListing.objects.all()
+        context["cart_no"] = CartItem.objects.filter(user = user).count()
         return context
     
 
