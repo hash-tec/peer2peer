@@ -32,10 +32,10 @@ class AddCartview(TemplateView):
               except:
                                   cart = CartItem.objects.create(item_name=item.item_name, 
                                          brand=item.brand,
-                                        descriptionhgyfv=item.description, 
-                                        price=item.price, 
-                                        image=item.image, 
-                                        user = cart_user)
+                                         description=item.description, 
+                                         price=item.price, 
+                                         image=item.image, 
+                                         user = cart_user)
 
               return redirect('available-listing')
               

@@ -1,5 +1,5 @@
 body{
-    color: #FF595A;
+    color: #390067;
 }
 .text{
     margin-bottom: 30px;
@@ -13,8 +13,8 @@ body{
 .form-container{
     width: 40%;
     margin: auto;
-    background-color: #001233;
     padding: 40px;
+    border: solid 3px #390067;
     border-radius:20px;
 }
 
@@ -43,12 +43,12 @@ body{
 }
 
 button{
-    background-color: #FF595A; 
-    color: white;
+    background-color: white; 
+    color: #390067;
     width: 110px;
     height: 46px;
     border-radius: 5px;
-    border: none;
+    border: solid 2px #390067;
     margin-top: 13px;
     margin-left: 23%;
     font-size: 20px;
@@ -56,7 +56,7 @@ button{
   }
   
 button:hover{
-    background-color:  white;
-    color: #001233;
+    background-color:  #390067;
+    color: white;
     transition: 0.5s;
 }  

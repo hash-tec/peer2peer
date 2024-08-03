@@ -20,9 +20,8 @@
                             </div>
                             <div class="brand">
                                 <P>Brand: {{item.brand}}</P>
-                                <p></p>
                             </div> 
-                           
+                            <a href = "{% url 'addcart' item.id %}">➕</a>
                         </div>
                         <div class="price">
                             <P>${{item.price}} ✖ {{item.quantity}}</P>

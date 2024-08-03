@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
-    color: #001233;
+    color: black;
     margin: 0;
     padding: 0;
 }
@@ -13,7 +13,7 @@ body {
 }
 
 header {
-    background-color: #001233;
+    background-color: #390067;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
@@ -44,7 +44,7 @@ header {
 .stats {
     display: flex;
     justify-content: space-around;
-    background-color: #001233;
+    background-color: #390067;
     color: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -71,7 +71,7 @@ header {
 .activity h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #FF595A;
+    color: #666666;
 }
 
 .activity ul {

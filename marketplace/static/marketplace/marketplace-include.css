@@ -7,7 +7,7 @@
 .first{
     display: inline-block;
 
-    margin-right: 25%;
+    margin-right: 38%;
     width: 30%;
 }
 .logo-text{
@@ -20,44 +20,40 @@
    }
 .logo-text a{
     text-decoration: none;
-    color: #FF595A; 
+    color: #390067; 
    }
-.second{
+.second {
     display: inline-block;
-    width: 40%;
-}
-.second ul{
-    margin: 0 0 0 0px;
-    padding-left: 40%;
-
-}
-.second ul li{
-    display: inline-block;
-    list-style: none;
-}
-
-.second ul li a{
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 100;
-    color:  #001233;
-}
-
- 
+    width: 30%;
+   
+    
+    }
 .second button{
-    width: 80px;
-    height: 28px;
-    border: 2px solid #FF595A;
-    background-color: transparent;
-    border-radius: 5px;
-}
-
-button:hover{
-    background-color:  #FF595A;
+    background-color: white; 
+     border: 2px solid #390067;
+     color:#390067 ;
+     width: 70px;
+     height: 25px;
+     border-radius: 5px;
+     margin-top: 22px;
+     margin-left: 30px;
+     font-size: 13px;
+     font-weight: 400;
+    }
+    
+.second :hover button{
+    background-color:  #390067;
     color: white;
     transition: 0.5s;
-  }
+    }
+    .login{
+    margin-left: 5px;
+    }
 
-.order-button{
-    margin-left: 0px;
+.cart{
+    display: inline-block;
+}
+
+.orders{
+    display: inline-block;
 }

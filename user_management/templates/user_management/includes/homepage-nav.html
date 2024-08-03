@@ -22,12 +22,12 @@
             </ul>   
         </div>
         <div class="third-nav">
-            <ul>
-                <li><a href=""><p>ORDER</p></a></li>
-                <li><a href=""><P>CART</P></a></li>
-            </ul>
-      
-      
+            <div class="cart">
+                <a href="{% url "cart" %}"><button>Cart</button></a>
+            </div>
+            <div class="orders">
+                <a href="{% url "sign-up"%}"><button>Orders</button></a>
+            </div>
         </div>
     </nav>
 </section>

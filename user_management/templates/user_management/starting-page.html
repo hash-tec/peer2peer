@@ -7,20 +7,24 @@
 
 
 {% block content %}
-
-    
-    <div class="first-text">
         {% include "user_management/includes/landing-page-navbar.html" %}
-        <div class="first-container">
+        <div class="body-content"> 
+            <section class="first-section">
+                <div class= title-text>
+                   <p> Your Number Digital One Marketplace</p>
+                   <img src={% static "user_management/images/cart-image.jpeg"%}>
+                </div>
+            </section>
+
+            {% comment %} <div class="first-container">
             <div class="first-subcon">
                 <p>
                     We provide the best and the fastest way to get what you need.
                 </p>
             </div>
             <div class="second-subcon"> <img src="{% static "user_management/images/smily.jpeg" %}" alt="Peer image"></div>
+        </div>{% endcomment %}
         </div>
-    <div class="second-container">
-       
-    </div>
-    </div>
+
+
 {% endblock content %}
