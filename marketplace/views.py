@@ -50,3 +50,5 @@ class ItemDetailView(TemplateView):
 class ThanksView(TemplateView):
     template_name = "marketplace/thanks.html" 
      
+class DicoverView(TemplateView):
+    template_name="marketplace/discover.html"

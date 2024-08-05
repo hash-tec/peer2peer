@@ -21,7 +21,8 @@
                             <div class="brand">
                                 <P>Brand: {{item.brand}}</P>
                             </div> 
-                            <a href = "{% url 'addcart' item.id %}">➕</a>
+                            <a href = "{% url 'addition' item.id %}">➕</a>
+                            {{item.id}}
                         </div>
                         <div class="price">
                             <P>${{item.price}} ✖ {{item.quantity}}</P>

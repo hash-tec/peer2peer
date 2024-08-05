@@ -27,6 +27,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="item_id" value= {{item.id}} >
                             <button class="cart-button"><p>Add to cart</p></button>
+                            {{item.id}}
                         </form>
                     </div>
                    

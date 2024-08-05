@@ -13,3 +13,15 @@ class CreateListingForm(forms.ModelForm):
             "password":"Password"
         }
         exclude = ("slug",)
+
+class RequestItemForm(forms.ModelForm):
+
+    class Meta:
+        model = models.RequestItem
+        labels={
+            "item_name":"Product Name",
+            "brand": "Product Brand",
+            "price": "Price willing to pay",
+        }
+
+        exclude =("slug",)
