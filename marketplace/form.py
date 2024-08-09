@@ -24,4 +24,4 @@ class RequestItemForm(forms.ModelForm):
             "price": "Price willing to pay",
         }
 
-        exclude =("slug",)
+        exclude =("slug","user")

@@ -1,2 +1,18 @@
-<p>Discover</p>
-
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Discover{% endblock title %}
+{% block styling %}<link rel="stylesheet" href="{% static 'marketplace/discover.css'%}">{% endblock styling %}
+{% block content %}
+    <div class="main-section">
+    {% for item in requested_items%}
+        <div class="sub-section">
+            <div class="image"><img src="{{item.image.url}}"></div>
+            <div class="section-text">
+                <div class="name"><p>Product Name: {{item.item_name}}</p></div>
+                <div class="brand"><p>Product Brand: {{item.brand}}</p></div>
+                <div class="price"><p>Price the buyer is willing to pay:#{{item.price}}</p></div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

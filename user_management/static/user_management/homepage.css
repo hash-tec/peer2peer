@@ -27,3 +27,23 @@ body{
     width: 280px;
     margin-left: 350px;
 }
+.discover-button button{
+    border: 2px solid #390067;
+    border-radius: 5px;
+    color: #390067;
+    font-weight: 600;
+    width: 200px;
+    height: 30px;
+    margin-top: 200px;
+    margin-left: 82%;
+    cursor: pointer;
+    position: fixed;
+    float: right;
+
+}
+ 
+
+.discover-button :hover button{
+    background-color: #390067;
+    color: white;
+}

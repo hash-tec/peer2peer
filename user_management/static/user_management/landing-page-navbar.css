@@ -96,6 +96,7 @@ nav .third-nav button{
    margin-left: 30px;
    font-size: 13px;
    font-weight: 400;
+   cursor: pointer;
 }
 
 .third-nav :hover button{

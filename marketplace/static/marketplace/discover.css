@@ -1,0 +1,18 @@
+body{
+    padding: 30px;
+
+}
+img{
+    width: 300px;
+}
+.sub-section{
+    border: 2px solid #390067;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    margin-bottom: 30px;
+}
+.section-text{
+    margin-left: 40px;
+}

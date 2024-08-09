@@ -23,8 +23,8 @@ hr{
     padding-bottom: 15px;
 }
 .item-section{
-
-    height: 80px;
+    padding-top: 10px;
+    height: 100px;
     width: 95%;
     margin: auto;
     margin-top: 10px;
@@ -92,4 +92,17 @@ hr{
     margin-left: 130px;
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+.shortcut button{
+    margin-top: 5px;
+    background-color: #390067;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    font-size: 25px;
+    padding: 0;
+    cursor: pointer;
 }

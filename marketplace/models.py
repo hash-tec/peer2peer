@@ -22,13 +22,16 @@ class CreateListing(models.Model):
         return f"{self.item_name} "
     
 class Requester(models.Model):
-    User = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"{self.user}"
       
 class RequestItem(models.Model):
     user = models.ForeignKey(Requester, on_delete=models.CASCADE, null = True, related_name="requester")
     item_name = models.CharField(max_length=150, blank=False)
     brand = models.CharField(max_length=50, blank=False)
-    price = models.DecimalField( max_digits=10, decimal_places=2)
+    price = models.DecimalField( max_digits=10, decimal_places=0, null=True)
     date_created = models.DateField(auto_now_add=True)
-    image = models.FileField(upload_to="items_images", null=True)
+    image = models.FileField(upload_to="requesteditems-image", null=True)
     slug = models.SlugField(default="", null=True)

@@ -2,7 +2,7 @@
 {% load static %}
  {% block title %}Hash Marketplace{% endblock title %}
 {% block styling %}
-    <link rel="stylesheet" href="{% static "user_management/starting-page.css" %}">
+    <link rel="stylesheet" href="{% static "user_management/homepage.css" %}">
 {% endblock styling %}
 
 
@@ -15,15 +15,9 @@
                    <img src={% static "user_management/images/cart-image.jpeg"%}>
                 </div>
             </section>
-
-            {% comment %} <div class="first-container">
-            <div class="first-subcon">
-                <p>
-                    We provide the best and the fastest way to get what you need.
-                </p>
+            <div class = "discover-button">
+                <a href={%url 'request'%}><button>Need an item? Click Here</button></a>
             </div>
-            <div class="second-subcon"> <img src="{% static "user_management/images/smily.jpeg" %}" alt="Peer image"></div>
-        </div>{% endcomment %}
         </div>
 
 

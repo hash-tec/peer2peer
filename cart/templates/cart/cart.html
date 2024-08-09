@@ -20,9 +20,11 @@
                             </div>
                             <div class="brand">
                                 <P>Brand: {{item.brand}}</P>
-                            </div> 
-                            <a href = "{% url 'addition' item.id %}">➕</a>
-                            {{item.id}}
+                            </div>
+                            <div class="shortcut">
+                                <a href = "{% url 'addition' item.id %}"><button>+</button></a>
+                                <a href = "{% url 'remove' item.id %}"><button>-</button></a>
+                            </div>
                         </div>
                         <div class="price">
                             <P>${{item.price}} ✖ {{item.quantity}}</P>
@@ -40,9 +42,8 @@
                 <p>{{total_amount.total}}</p>
             </div>
                 <hr>
+            <div class="payment-button"><button><a href="{url 'cart'}">Procees To Payment</a></button></div>
         </div>
        
     </div>
-   
-    {{cart_no}}
 {% endblock content %}
