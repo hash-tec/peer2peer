@@ -21,13 +21,15 @@
                             <div class="brand">
                                 <P>Brand: {{item.brand}}</P>
                             </div>
-                            <div class="shortcut">
-                                <a href = "{% url 'addition' item.id %}"><button>+</button></a>
-                                <a href = "{% url 'remove' item.id %}"><button>-</button></a>
-                            </div>
+                            <div class="remove-link"> <a href="{% url 'remove' item.id%}"> Remove </a></div>
                         </div>
                         <div class="price">
-                            <P>${{item.price}} ✖ {{item.quantity}}</P>
+                            <P>${{item.price}}</P>
+                            <div class="shortcut">
+                                <a href = "{% url 'reduction' item.id %}"><button>-</button></a>
+                                <p>{{item.quantity}}</p>
+                                <a href = "{% url 'addition' item.id %}"><button>+</button></a>
+                            </div>
                         </div> 
                        
                         {% comment %} <a href="{% url 'addcart' item.id %}"><button class="cart-button"><p>Add to cart</p></button></a> {% endcomment %}
@@ -42,7 +44,7 @@
                 <p>{{total_amount.total}}</p>
             </div>
                 <hr>
-            <div class="payment-button"><button><a href="{url 'cart'}">Procees To Payment</a></button></div>
+            <div class="payment-button"><a  href="{% url 'cart' %}"><button> Proceed To Payment</button></a></div>
         </div>
        
     </div>

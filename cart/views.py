@@ -51,15 +51,18 @@ class CartAddView(TemplateView):
               return redirect('cart')
           
 
-class CartRemoveView(TemplateView):
+class CartReductionView(TemplateView):
        def get(self, request, *args, **kwargs):
               cur_user = Cart.objects.get(user=self.request.user)
               item_id = kwargs["itemid"]
               item = CartItem.objects.get(id = item_id)
               filter_cart = CartItem.objects.get(user = cur_user, item_name = item.item_name, brand = item.brand)
-              filter_cart.quantity -= 1
-              filter_cart.save()
-              return redirect('cart')
+              if filter_cart.quantity == 0:
+                     return redirect("cart")
+              else:
+                filter_cart.quantity -= 1
+                filter_cart.save()
+                return redirect('cart')
           
             
 class CartView(TemplateView):
@@ -78,3 +81,10 @@ class CartView(TemplateView):
             print(total_amount)
                  
             return context
+        
+class RemoveItem(TemplateView):
+       def get(self, request, *args, **kwargs):
+              item_id = kwargs["itemid"]
+              item = CartItem.objects.get(id = item_id)
+              item.delete()
+              return redirect("cart")
