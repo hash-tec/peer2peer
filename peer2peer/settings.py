@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_management',
     'marketplace',
-    'cart'
+    'cart',
+    'payments',
 ]
 
 MIDDLEWARE = [

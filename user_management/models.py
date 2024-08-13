@@ -7,4 +7,5 @@ class CustomerUser(AbstractUser):
     bio = models.TextField(max_length=250)
     dob=models.DateField(null=True, blank=True)
     pfp = models.FileField(upload_to="profile-images",null=True )
+    address = models.CharField(max_length=250, null=True)
 

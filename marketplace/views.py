@@ -35,7 +35,15 @@ class CreateListingView(TemplateView):
     def post(self, request):
         form = CreateListingForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product_name = request.POST["item_name"]
+            brand = request.POST["brand"]
+            discount = request.POST["discount"]
+            price = request.POST["price"]
+            calc_discount = int(discount) * int(price) // 100
+            discounted_price = int(price) - calc_discount
+            listing = form.save(commit=False)
+            listing.discounted_price = discounted_price
+            listing.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
     
@@ -69,11 +77,13 @@ class RequestView(TemplateView):
         brand = request.POST["brand"]
         price = request.POST["price"]
         image = request.FILES["image"]
+      
         if form.is_valid():
             item_requested= RequestItem.objects.create(item_name= product_name, 
                                          brand=brand, 
                                          price=price, 
                                          image=image, 
+                                         discounted_price = discounted_price,
                                          user = requester)
             
             return redirect("request")

@@ -12,7 +12,7 @@ class CreateListingForm(forms.ModelForm):
             "username":"Username",
             "password":"Password"
         }
-        exclude = ("slug",)
+        exclude = ("slug","discounted_price")
 
 class RequestItemForm(forms.ModelForm):
 
@@ -24,4 +24,4 @@ class RequestItemForm(forms.ModelForm):
             "price": "Price willing to pay",
         }
 
-        exclude =("slug","user")
+        exclude =("slug","user", )
