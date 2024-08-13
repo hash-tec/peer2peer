@@ -5,7 +5,14 @@ from django.conf import settings
 
 
 # Create your models here.
+
+class Seller(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"{self.user}"
 class CreateListing(models.Model):
+    seller = models.ForeignKey(Seller, on_delete= models.CASCADE, null=True,related_name="seller")
     item_name = models.CharField(max_length=150, blank=False)
     brand = models.CharField(max_length=50, blank=False)
     description = models.TextField(blank=False)

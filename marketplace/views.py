@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
-from marketplace.models import CreateListing, Requester, RequestItem
+from marketplace.models import CreateListing, Requester, RequestItem, Seller
 from marketplace.form import CreateListingForm, RequestItemForm
 from cart.models import CartItem, Cart
 from django.contrib.auth.models import User
@@ -33,7 +33,9 @@ class CreateListingView(TemplateView):
     
     
     def post(self, request):
+        user = self.request.user
         form = CreateListingForm(request.POST, request.FILES)
+        seller, created = Seller.objects.get_or_create(user = user)
         if form.is_valid():
             product_name = request.POST["item_name"]
             brand = request.POST["brand"]
@@ -43,9 +45,12 @@ class CreateListingView(TemplateView):
             discounted_price = int(price) - calc_discount
             listing = form.save(commit=False)
             listing.discounted_price = discounted_price
+            listing.seller = seller
             listing.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
+    
+
     
 class ItemDetailView(TemplateView):
     template_name = "marketplace/item-details.html"
@@ -83,7 +88,6 @@ class RequestView(TemplateView):
                                          brand=brand, 
                                          price=price, 
                                          image=image, 
-                                         discounted_price = discounted_price,
                                          user = requester)
             
             return redirect("request")
