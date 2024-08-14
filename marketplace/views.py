@@ -41,12 +41,15 @@ class CreateListingView(TemplateView):
             brand = request.POST["brand"]
             discount = request.POST["discount"]
             price = request.POST["price"]
-            calc_discount = int(discount) * int(price) // 100
-            discounted_price = int(price) - calc_discount
-            listing = form.save(commit=False)
-            listing.discounted_price = discounted_price
-            listing.seller = seller
-            listing.save()
+            if discount:
+                calc_discount = int(discount) * int(price) // 100
+                discounted_price = int(price) - calc_discount
+                listing = form.save(commit=False)
+                listing.discounted_price = discounted_price
+                listing.seller = seller
+                listing.save()
+            else:
+                form.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
     
@@ -98,4 +101,18 @@ class DiscoverView(TemplateView):
             context = super().get_context_data(**kwargs)
             context["requested_items"] = RequestItem.objects.all()
             return context
-        
+
+class OrdersView(TemplateView):
+    template_name = "marketplace/orders.html"
+    
+    def get(self, request, *args, **kwargs):
+        user = Seller.objects.get(user = self.request.user)
+        orders_list = CreateListing.objects.filter(seller = user)
+        return render(request, "marketplace/orders.html", {"orders": orders_list})
+    
+class CancelListingView(TemplateView):
+        def get(self, request, *args, **kwargs):
+            item_id = kwargs["itemid"]
+            item = CreateListing.objects.get(id = item_id)
+            item.delete()
+            return redirect("orders")

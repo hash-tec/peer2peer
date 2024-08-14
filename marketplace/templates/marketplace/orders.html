@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cart{% endblock title %}
+{% block styling %}<link rel="stylesheet" href="{% static "cart/cart.css" %}">{% endblock styling %}
+
+{% block content %}
+    <div class="cart-body">
+        {% if orders %}
+            <div class= "listing-section">
+                <div class="orders-text"><h1>orders</h1></div>
+                {% for item in orders %}
+                    <hr>
+                    <div class="item-section">
+                        <div class="mini-section">
+                            <div class="item-image"><img src="{{item.image.url}}"/></div>
+                            <div class="item-details">
+                                <div class="name">
+                                    <p>{{item.item_name}}</p>
+                                </div>
+                                <div class="brand">
+                                    <P>Brand: {{item.brand}}</P>
+                                </div>
+                                <div class="remove-link"> <a href="{% url 'cancellisting' item.id%}"> Cancel Listing </a></div>
+                            </div>
+                {% endfor %}
+            </div>
+        {% else %}
+        <h3>You have no Listing</h3>
+        {% endif %}
+
+       
+{% endblock %}

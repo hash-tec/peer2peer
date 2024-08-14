@@ -17,9 +17,21 @@
                         <P>Brand: {{item.brand}}</P>
                         <p></p>
                     </div> 
-                    <div class="price">
-                        <P>$ {{item.price}}</P>
-                    </div> 
+                    {% if item.discounted_price %}
+                        <div class="dis_price">
+                            <P class="pri">$ <span>{{item.price}}</span> {{item.discount}} % OFF</P>
+                            <p>$ {{item.discounted_price}}</p>
+                        </div>
+
+
+                    {% else %}
+                        <div class="price">
+                            <P>$ {{item.price}}</P>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="seller"> <p>Seller: {{item.seller}} </p></div>
+                   
                     <div class="buttons">
                         {% comment %} <a href="{% url 'item-details' item.slug %}"><button class="buy-button"><p>Buy This Item</p></button></a> {% endcomment %}
         
@@ -27,7 +39,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="item_id" value= {{item.id}} >
                             <button class="cart-button"><p>Add to cart</p></button>
-                            {{item.id}}
+                       
                         </form>
                     </div>
                    
