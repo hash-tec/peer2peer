@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 class AvailableListingView(TemplateView):
     template_name = "marketplace/available-listing.html"
     def get_context_data(self, **kwargs):
-        user = Cart.objects.get(user =self.request.user)
+        user, created = Cart.objects.get_or_create(user =self.request.user)
         context = super().get_context_data(**kwargs)
         context["items_created"] = CreateListing.objects.all()
         context["cart_no"] = CartItem.objects.filter(user = user).count()
@@ -41,15 +41,16 @@ class CreateListingView(TemplateView):
             brand = request.POST["brand"]
             discount = request.POST["discount"]
             price = request.POST["price"]
+            listing = form.save(commit=False)
             if discount:
                 calc_discount = int(discount) * int(price) // 100
                 discounted_price = int(price) - calc_discount
-                listing = form.save(commit=False)
                 listing.discounted_price = discounted_price
                 listing.seller = seller
                 listing.save()
             else:
-                form.save()
+                listing.seller = seller
+                listing.save()
             return redirect('thanks')
         return render(request,"marketplace/create.html", {"form":form} )
     
@@ -106,7 +107,7 @@ class OrdersView(TemplateView):
     template_name = "marketplace/orders.html"
     
     def get(self, request, *args, **kwargs):
-        user = Seller.objects.get(user = self.request.user)
+        user, created = Seller.objects.get_or_create(user = self.request.user)
         orders_list = CreateListing.objects.filter(seller = user)
         return render(request, "marketplace/orders.html", {"orders": orders_list})
     
@@ -116,3 +117,33 @@ class CancelListingView(TemplateView):
             item = CreateListing.objects.get(id = item_id)
             item.delete()
             return redirect("orders")
+        
+class UpdateListView(TemplateView):
+    template_name = "marketplace/update.html"
+    def get(self, request, *args, **kwargs):
+        item_id = kwargs["itemid"]
+        listing = CreateListing.objects.get(id = item_id )
+        form = CreateListingForm( instance=listing)
+        return render(request,"marketplace/update.html", {"form":form})
+      
+    def post(self, request, *args, **kwargs):
+        item_id = kwargs["itemid"]
+        listing = CreateListing.objects.get(id = item_id )
+        form = CreateListingForm(request.POST, request.FILES, instance= listing)
+    
+        product_name = request.POST["item_name"]
+        brand = request.POST["brand"]
+        discount = request.POST["discount"]
+        price = request.POST["price"]
+        if form.is_valid():
+            list = form.save(commit = False)
+            if discount:
+                calc_discount = int(discount) * int(price) // 100
+                discounted_price = int(price) - calc_discount
+                list.discounted_price = discounted_price
+                list.save()
+
+            return redirect("orders")
+        return render(request,"marketplace/update.html", {"form":form})
+    
+    

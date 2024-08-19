@@ -20,7 +20,9 @@
                                 <div class="brand">
                                     <P>Brand: {{item.brand}}</P>
                                 </div>
+                                
                                 <div class="remove-link"> <a href="{% url 'cancellisting' item.id%}"> Cancel Listing </a></div>
+                                <div class="update-link"> <a href="{% url 'update' item.id%}"> update Listing </a></div>
                             </div>
                 {% endfor %}
             </div>

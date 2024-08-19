@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ClearableFileInput
 from django.contrib.auth.models import User
 from .models import CustomerUser
+
 class SignupForm(UserCreationForm):
 
     class Meta:

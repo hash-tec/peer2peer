@@ -1,5 +1,5 @@
 from django.contrib import admin
-from marketplace.models import CreateListing, RequestItem
+from marketplace.models import CreateListing, RequestItem,Seller
 
 
 class CreateListingAdmin(admin.ModelAdmin):
@@ -11,3 +11,5 @@ class RequestItemAdmin(admin.ModelAdmin):
     list_display =("user", "item_name", "price")
 
 admin.site.register(RequestItem,RequestItemAdmin)
+
+admin.site.register(Seller)

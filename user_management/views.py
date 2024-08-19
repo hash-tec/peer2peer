@@ -73,6 +73,7 @@ class ProfileView(TemplateView):
         context["dob"] = self.request.user.dob
         context["bio"] = self.request.user.bio
         context["pfp"] = self.request.user.pfp
+        context["address"] = self.request.user.address
         return context
     def post(self, request, *args, **kwargs):
         form = ProfileForm(request.POST, request.FILES, instance=request.user)
