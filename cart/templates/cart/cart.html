@@ -13,6 +13,9 @@
                 <hr>
                 <div class="item-section">
                     <div class="mini-section">
+                        {% if item.item_name in unavailable_items %}
+                            <p>This available is no more available</p>
+                        {% endif %}
                         <div class="item-image"><img src="{{item.image.url}}"/></div>
                         <div class="item-details">
                             <div class="name">
@@ -44,7 +47,12 @@
                 <p>{{total_amount.total}}</p>
             </div>
                 <hr>
-            <div class="payment-button"><a  href="{% url 'payment' %}"><button> Proceed To Payment</button></a></div>
+                {% if unavailable_items %}
+                <p>Remove the unlisted item(s) </p>
+                {% else %}
+                <div class="payment-button"><a  href="{% url 'payment' %}"><button> Proceed To Payment</button></a></div>
+                {% endif %}
+           
         </div>
        
     </div>

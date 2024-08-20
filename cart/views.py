@@ -7,7 +7,32 @@ from cart.models import Cart, CartItem
 from django.db.models import Count, F,Sum
 
 # Create your views here.
-class AddCartview(TemplateView):
+
+class CartView(TemplateView):
+        template_name = "cart/cart.html"
+        #The line of code below get the instance of the the current user from the 'Cart' model 
+        # The 'user_cart' variable is to filter out the instances with the current logged in user, with this way the template will only...
+        #... render cart items that belongs to the current looged in user.
+        # The 'total_amount' variable use the Sum object to sum up price the quantity of each item to get the total amount of user cart
+        def get(self, request, *args, **kwargs):
+               user = Cart.objects.get(user = self.request.user)
+               user_cart = CartItem.objects.filter(user = user) 
+               total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
+               unavailable_items = []
+
+               for cart in user_cart:
+                     if not CreateListing.objects.filter(item_name=cart.item_name).exists():
+                             unavailable_items.append(cart.item_name)  
+
+              
+               return render(request, "cart/cart.html", {
+               "total_amount": total_amount,
+               "user_cart": user_cart,
+               "unavailable_items": unavailable_items
+               })
+                             
+        
+class AddCartview(TemplateView): 
         def post(self, request, *args, **kwargs):
               cur_user = self.request.user
               item_id = request.POST ["item_id"]
@@ -65,23 +90,7 @@ class CartReductionView(TemplateView):
                 return redirect('cart')
           
             
-class CartView(TemplateView):
-        template_name = "cart/cart.html"
-        #The line of code below get the instance of the the current user from the 'Cart' model 
-        # The 'user_cart' variable is to filter out the instances with the current logged in user, with this way the template will only...
-        #... render cart items that belongs to the current looged in user.
-        # The 'total_amount' variable use the Sum object to sum up price the quantity of each item to get the total amount of user cart
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            user = Cart.objects.get(user = self.request.user)
-            context["user_cart"] = CartItem.objects.filter(user = user) 
-            
-            total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
-            context["total_amount"] = total_amount
-            print(total_amount)
-                 
-            return context
-        
+
 class RemoveItem(TemplateView):
        def get(self, request, *args, **kwargs):
               item_id = kwargs["itemid"]

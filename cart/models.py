@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from marketplace.models import CreateListing
 from django.conf import settings
 
 
