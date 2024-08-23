@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
-from marketplace.models import CreateListing, Requester, RequestItem, Seller
+from marketplace.models import CreateListing, Requester, RequestItem, Seller,Buyer, Buy
 from marketplace.form import CreateListingForm, RequestItemForm
 from cart.models import CartItem, Cart
 from django.contrib.auth.models import User
+from django.db.models import Count,Sum,F
 
 
 # Create your views here.
@@ -51,7 +52,7 @@ class CreateListingView(TemplateView):
             else:
                 listing.seller = seller
                 listing.save()
-            return redirect('thanks')
+            return redirect('available-listing')
         return render(request,"marketplace/create.html", {"form":form} )
     
 
@@ -147,3 +148,24 @@ class UpdateListView(TemplateView):
         return render(request,"marketplace/update.html", {"form":form})
     
     
+class Order_review(TemplateView):
+     template_engine = "marketplace/order-review.html"
+
+     def get(self, request):
+        buyer, created = Buyer.objects.get_or_create(user = self.request.user)
+        user = Cart.objects.get(user = self.request.user)
+        cart_items = CartItem.objects.filter(user = user)
+        total_amount = total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
+        for item in cart_items:
+            Buy.objects.create(item_name=item.item_name, 
+                                            brand=item.brand,
+                                            description=item.description, 
+                                            price=item.price, 
+                                            image=item.image, 
+                                            buyer = buyer
+                                            )
+            return render(request, "marketplace/order-review.html", {
+           "buyer_address":request.user.address,
+           "bought_product": cart_items,
+           "total_amount": total_amount
+       })

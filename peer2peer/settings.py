@@ -133,3 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR/"uploads"
 MEDIA_URL = "//"
 AUTH_USER_MODEL = "user_management.CustomerUser"
+
+FLUTTERWAVE_PUBLIC_KEY = 'your-public-key'
+FLUTTERWAVE_SECRET_KEY = 'your-secret-key'
+FLUTTERWAVE_ENCRYPTION_KEY = 'your-encryption-key'

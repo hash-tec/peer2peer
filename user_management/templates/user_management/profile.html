@@ -3,33 +3,62 @@
 {% block title %}Profile{% endblock title %}
 {% block styling %}<link rel="stylesheet" href="{% static "user_management/profile.css" %}">{% endblock styling %}
 {% block content %}
-    {% if  username == verify_user %}
+    {% if username == verify_user %}
         <div class="container">
             <header>
                 <h1>Profile Page</h1>
             </header>
             <div class="profile-info">
                 {% if pfp %}
-                <img src="{{pfp.url}}" alt="Profile Picture" class="profile-picture">
+                <img src="{{ pfp.url }}" alt="Profile Picture" class="profile-picture">
                 {% else %}
                 <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
                 {% endif %}
 
-                <form method="post" enctype="multipart/form-data" class="styled-form" >
+                <form method="post" enctype="multipart/form-data" class="styled-form">
                     {% csrf_token %}
-                    {% for field in profileform  %}
-                        {{field}}
-                    {% endfor %}
-                    <button>Upload</button>
+                    
+                    <div class="form-field">
+                        {{ profileform.pfp.label }}: {{ profileform.pfp }}
+                    </div>
+
+                    <h2 class="username">{{ username }}</h2>
+                    <p class="email">Email: {{ email }}</p>
+                    <p class="name">{{ firstname }} {{ lastname }}</p>
+
+
+                    {% if not dob %}
+                        <div class="form-field">
+                            <label>{{ dobform.dob.label }}: {{ dobform.dob }}</label>
+                            <div class="error-message">{{ dobform.dob.errors }}</div>
+                        </div>
+                    {% else %}
+                        <p class="dob">DOB: {{ dob }}</p>
+                    {% endif %}
+
+
+                    {% if not bio %}
+                        <div class="form-field">
+                            <label>{{ bioform.bio.label }}: {{ bioform.bio }}</label>
+                            <div class="error-message">{{ bioform.bio.errors }}</div>
+                        </div>
+                    {% else %}
+                        <p class="bio">Bio: {{ bio }}</p>
+                    {% endif %}
+
+
+                    {% if not address %}
+                        <div class="form-field">
+                            <label>{{ addressform.address.label }}: {{ addressform.address }}</label>
+                            <div class="error-message">{{ addressform.address.errors }}</div>
+                        </div>
+                    {% else %}
+                        <p class="address">Address: {{ address }}</p>
+                    {% endif %}
+                    <button type="submit" class="submit-button">Save</button>
                 </form>
-                <h2 class="username">{{username}}</h2>
-                <p class="email"> Email: {{email}}</p>
-                <p class="name">{{firstname}} {{lastname}}</p>
-                <p class="dob">DOB: {{dob}} hi</p>
-                <p class="bio">Bio: {{bio}}</p>
-                <p class="address"> Address: {{address}}</p>
             </div>
-            </div>
+
             <div class="stats">
                 <div class="stat">
                     <h3>Total Sales</h3>
@@ -48,6 +77,7 @@
                     <p>90</p>
                 </div>
             </div>
+
             <div class="activity">
                 <h3>Recent Activity</h3>
                 <ul>
@@ -59,11 +89,8 @@
             </div>
         </div>
     {% else %}
-        <h1>This User needs to be autheticated</h1>
+        <h1>This User needs to be authenticated</h1>
     {% endif %}
    
     {% include "user_management/includes/logout.html" %}
 {% endblock content %}
-
-
- 

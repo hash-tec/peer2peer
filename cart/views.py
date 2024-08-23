@@ -15,7 +15,7 @@ class CartView(TemplateView):
         #... render cart items that belongs to the current looged in user.
         # The 'total_amount' variable use the Sum object to sum up price the quantity of each item to get the total amount of user cart
         def get(self, request, *args, **kwargs):
-               user = Cart.objects.get(user = self.request.user)
+               user, created                           = Cart.objects.get_or_create(user = self.request.user)
                user_cart = CartItem.objects.filter(user = user) 
                total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
                unavailable_items = []
@@ -82,12 +82,11 @@ class CartReductionView(TemplateView):
               item_id = kwargs["itemid"]
               item = CartItem.objects.get(id = item_id)
               filter_cart = CartItem.objects.get(user = cur_user, item_name = item.item_name, brand = item.brand)
-              if filter_cart.quantity == 0:
-                     return redirect("cart")
-              else:
-                filter_cart.quantity -= 1
-                filter_cart.save()
-                return redirect('cart')
+              filter_cart.quantity -= 1
+              filter_cart.save()
+              if filter_cart.quantity < 1:
+                     return redirect("remove", itemid=item_id)
+              return redirect('cart')
           
             
 

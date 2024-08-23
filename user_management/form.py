@@ -20,7 +20,36 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = CustomerUser
         fields = ["pfp"]
+
+from django import forms
+
+class DobForm(forms.ModelForm):
+    class Meta:
+        model = CustomerUser  # Replace with your actual model
+        fields = ['dob']
+
+    dob = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'  # Add Bootstrap or other CSS classes if needed
+            }
+        ),
+        label='Date of Birth',
+        required=True,
+    )
+
     
 
+class BioForm(forms.ModelForm):
+    class Meta:
+        model = CustomerUser
+        fields = ["bio"]
+    
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = CustomerUser
+        fields = ["address"]
+    
 
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
-from .form import SignupForm, LoginForm, ProfileForm
+from .form import SignupForm, LoginForm, ProfileForm, BioForm, AddressForm, DobForm
 from .models import CustomerUser
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -74,12 +74,27 @@ class ProfileView(TemplateView):
         context["bio"] = self.request.user.bio
         context["pfp"] = self.request.user.pfp
         context["address"] = self.request.user.address
+        context["dobform"] = DobForm()
+        context["bioform"] = BioForm()
+        context["addressform"] = AddressForm()
         return context
     def post(self, request, *args, **kwargs):
-        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        pfp_form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        dob_form = DobForm(request.POST,instance=request.user)
+        bio_form = BioForm(request.POST,instance=request.user)
+        address_form = AddressForm(request.POST,instance=request.user)
         username = kwargs.get('username')
-        if form.is_valid():
-            form.save()
+        if pfp_form.is_valid():
+            pfp_form.save()
+        
+        if dob_form.is_valid():
+            dob_form.save()
+        
+        if bio_form.is_valid():
+            bio_form.save()
+        
+        if address_form.is_valid():
+            address_form.save()
         return redirect('profile', username = username)
 
 
