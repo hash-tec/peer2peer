@@ -34,7 +34,7 @@ ALLOWED_HOSTS=['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,7 +58,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-hashtec-peer2peer-et4mqqzjw0r.ws-eu115.gitpod.io',
+]
+
 
 ROOT_URLCONF = 'peer2peer.urls'
 

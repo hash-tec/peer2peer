@@ -13,6 +13,9 @@ from django.db.models import Count, F,Sum
   
 class Payment(TemplateView):
     template_name = "payments/payments.html"
-
-    # def get(self, request):
-    #     user = self.request.user.fullname
+    def get(self, request):
+         full_name = self.request.user.get_full_name()
+         print(full_name)
+         return render(request, "payments/payments.html")
+        # def get(self, request):
+        #     user = self.request.user.fullname
