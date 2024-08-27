@@ -148,24 +148,3 @@ class UpdateListView(TemplateView):
         return render(request,"marketplace/update.html", {"form":form})
     
     
-class Order_review(TemplateView):
-     template_engine = "marketplace/order-review.html"
-
-     def get(self, request):
-        buyer, created = Buyer.objects.get_or_create(user = self.request.user)
-        user = Cart.objects.get(user = self.request.user)
-        cart_items = CartItem.objects.filter(user = user)
-        total_amount = total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
-        for item in cart_items:
-            Buy.objects.create(item_name=item.item_name, 
-                                            brand=item.brand,
-                                            description=item.description, 
-                                            price=item.price, 
-                                            image=item.image, 
-                                            buyer = buyer
-                                            )
-            return render(request, "marketplace/order-review.html", {
-           "buyer_address":request.user.address,
-           "bought_product": cart_items,
-           "total_amount": total_amount
-       })

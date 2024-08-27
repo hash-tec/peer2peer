@@ -1,4 +1,88 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-height: 100vh;
+}
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #f7f7f7, #eaeaea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Container */
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Card styling */
+.summary-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #390067;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #390067;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Section styling */
+.section {
+    margin-bottom: 30px;
+}
+
+.section p,
+.section ul {
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.section ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.section .total-amount {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+   
+}
 
 #start-payment-button {
     background-color: #ff9b00;

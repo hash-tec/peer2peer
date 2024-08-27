@@ -7,12 +7,32 @@
 <link rel="stylesheet" href="{% static "payments/payments.css" %}">
 {% endblock styling %}
 {% block content %}
-  <form>
-    <div>
-      Your order is ₦2,500
-    </div>
-    <button type="button" id="start-payment-button" onclick="makePayment()">Pay Now</button>
-  </form>
+<div class="payment-container">
+  <div class="summary-card">
+      <h1>Payment Summary</h1>
+      
+      <div class="section">
+          <h2>Buyer Information</h2>
+          <p><strong>Full Name:</strong> {{fullname}}</p>
+          <p><strong>Email:</strong> {{email}}</p>
+          <p><strong>Logistics Address:</strong>{{address}}</p>
+          <p><strong>Postal Code:</strong> 56789</p>
+      </div>
+    <hr>
+      <div class="section">
+          <p class="total-amount"><strong>Total Amount:</strong><span>NGN {{total_amount.total}}</span></p>
+      </div>
+
+      <div class="section payment-section">
+          <h2>Payment</h2>
+          <form>
+            <div>
+            </div>
+            <button type="button" id="start-payment-button" onclick="makePayment()">Checkout</button>
+          </form>
+      </div>
+  </div>
+</div>
 {% endblock content %}
 
 {% block scripts %}

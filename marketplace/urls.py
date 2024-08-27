@@ -12,5 +12,4 @@ urlpatterns = [
     path('orders/', views.OrdersView.as_view(), name ="orders" ),
     path('orders/cancel-listing/<int:itemid>', views.CancelListingView.as_view(), name = "cancellisting"),
     path('orders/update-listing/<int:itemid>', views.UpdateListView.as_view(), name = "update"),
-     path('order-review/', views.Order_review.as_view(), name="order-review" )
 ]

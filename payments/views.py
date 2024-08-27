@@ -14,8 +14,17 @@ from django.db.models import Count, F,Sum
 class Payment(TemplateView):
     template_name = "payments/payments.html"
     def get(self, request):
+         user = Cart.objects.get(user=self.request.user)
+         cart_items = CartItem.objects.filter(user = user)
+         total_amount = total_amount = CartItem.objects.filter(user=user).aggregate( total=Sum(F('price') * F('quantity')))
          full_name = self.request.user.get_full_name()
-         print(full_name)
-         return render(request, "payments/payments.html")
+         email = self.request.user.email
+         address = self.request.user.address
+         print(full_name, address)
+         print(f"{email} dont know")
+         return render(request, "payments/payments.html",{"fullname":full_name,
+                                                          "email":email,
+                                                          "address":address,
+                                                          "total_amount":total_amount})
         # def get(self, request):
         #     user = self.request.user.fullname
