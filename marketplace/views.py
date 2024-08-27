@@ -147,4 +147,3 @@ class UpdateListView(TemplateView):
             return redirect("orders")
         return render(request,"marketplace/update.html", {"form":form})
     
-    

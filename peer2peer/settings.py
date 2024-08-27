@@ -146,3 +146,6 @@ AUTH_USER_MODEL = "user_management.CustomerUser"
 FLUTTERWAVE_PUBLIC_KEY = 'your-public-key'
 FLUTTERWAVE_SECRET_KEY = 'your-secret-key'
 FLUTTERWAVE_ENCRYPTION_KEY = 'your-encryption-key'
+
+
+LOGIN_URL = 'login'

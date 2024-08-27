@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from  django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -10,8 +11,7 @@ from django.db.models import Count, F,Sum
 
 # Create your views here.
 
-  
-class Payment(TemplateView):
+class Payment(LoginRequiredMixin, TemplateView):
     template_name = "payments/payments.html"
     def get(self, request):
          user = Cart.objects.get(user=self.request.user)

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
 from .form import SignupForm, LoginForm, ProfileForm, BioForm, AddressForm, DobForm
@@ -18,7 +19,7 @@ class StartingPageView(TemplateView):
         return context
     
 
-class HomepageView(TemplateView):
+class HomepageView(LoginRequiredMixin, TemplateView):
     template_name ="user_management/homepage.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -60,7 +61,7 @@ class LoginView(TemplateView):
                 form=LoginForm()
                 return render(request, "user_management/login.html", {"form": form, 
                                                                       "error": "Invalid Credentials!!"})
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = "user_management/profile.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -98,13 +99,6 @@ class ProfileView(TemplateView):
         return redirect('profile', username = username)
 
 
-class AccountView(TemplateView):
-    template_name = "user_management/account.html"
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        profile_id = kwargs['username']
-        context["profile"] = "hi"
-        return context
     
 class ThanksView(TemplateView):
     template_name = "user_management/thanks.html"
