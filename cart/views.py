@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from marketplace.models import CreateListing
@@ -8,7 +9,7 @@ from django.db.models import Count, F,Sum
 
 # Create your views here.
 
-class CartView(TemplateView):
+class CartView(LoginRequiredMixin, TemplateView):
         template_name = "cart/cart.html"
         #The line of code below get the instance of the the current user from the 'Cart' model 
         # The 'user_cart' variable is to filter out the instances with the current logged in user, with this way the template will only...
@@ -32,7 +33,7 @@ class CartView(TemplateView):
                })
                              
         
-class AddCartview(TemplateView): 
+class AddCartview(LoginRequiredMixin, TemplateView): 
         def post(self, request, *args, **kwargs):
               cur_user = self.request.user
               item_id = request.POST ["item_id"]
@@ -64,7 +65,7 @@ class AddCartview(TemplateView):
               return redirect('available-listing')
               
 
-class CartAddView(TemplateView):
+class CartAddView(LoginRequiredMixin, TemplateView):
           template_name = "cart/addcart.html"
           def get(self, request, *args, **kwargs):
               cur_user = Cart.objects.get(user=self.request.user)
@@ -76,7 +77,7 @@ class CartAddView(TemplateView):
               return redirect('cart')
           
 
-class CartReductionView(TemplateView):
+class CartReductionView(LoginRequiredMixin, TemplateView):
        def get(self, request, *args, **kwargs):
               cur_user = Cart.objects.get(user=self.request.user)
               item_id = kwargs["itemid"]
@@ -90,7 +91,7 @@ class CartReductionView(TemplateView):
           
             
 
-class RemoveItem(TemplateView):
+class RemoveItem(LoginRequiredMixin, TemplateView):
        def get(self, request, *args, **kwargs):
               item_id = kwargs["itemid"]
               item = CartItem.objects.get(id = item_id)

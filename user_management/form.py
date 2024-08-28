@@ -39,7 +39,7 @@ class DobForm(forms.ModelForm):
         required=True,
     )
 
-    
+    dob = forms.DateField(required=False)
 
 class BioForm(forms.ModelForm):
     class Meta:

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic.base import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from marketplace.models import CreateListing, Requester, RequestItem, Seller,Buyer, Buy
 from marketplace.form import CreateListingForm, RequestItemForm
 from cart.models import CartItem, Cart
@@ -21,7 +22,7 @@ class AvailableListingView(TemplateView):
 
     
 
-class CreateListingView(TemplateView):
+class CreateListingView(LoginRequiredMixin, TemplateView):
     template_name ="marketplace/create.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -68,7 +69,7 @@ class ItemDetailView(TemplateView):
 class ThanksView(TemplateView):
     template_name = "marketplace/thanks.html" 
      
-class RequestView(TemplateView):
+class RequestView(LoginRequiredMixin, TemplateView):
     template_name="marketplace/requestform.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -104,7 +105,7 @@ class DiscoverView(TemplateView):
             context["requested_items"] = RequestItem.objects.all()
             return context
 
-class OrdersView(TemplateView):
+class OrdersView(LoginRequiredMixin, TemplateView):
     template_name = "marketplace/orders.html"
     
     def get(self, request, *args, **kwargs):
@@ -112,14 +113,14 @@ class OrdersView(TemplateView):
         orders_list = CreateListing.objects.filter(seller = user)
         return render(request, "marketplace/orders.html", {"orders": orders_list})
     
-class CancelListingView(TemplateView):
+class CancelListingView(LoginRequiredMixin, TemplateView):
         def get(self, request, *args, **kwargs):
             item_id = kwargs["itemid"]
             item = CreateListing.objects.get(id = item_id)
             item.delete()
             return redirect("orders")
         
-class UpdateListView(TemplateView):
+class UpdateListView(LoginRequiredMixin, TemplateView):
     template_name = "marketplace/update.html"
     def get(self, request, *args, **kwargs):
         item_id = kwargs["itemid"]

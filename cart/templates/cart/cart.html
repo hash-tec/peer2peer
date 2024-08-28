@@ -27,7 +27,7 @@
                             <div class="remove-link"> <a href="{% url 'remove' item.id%}"> Remove </a></div>
                         </div>
                         <div class="price">
-                            <P>${{item.price}}</P>
+                            <P>NGN {{item.price}}</P>
                             <div class="shortcut">
                                 <a href = "{% url 'reduction' item.id %}"><button>-</button></a>
                                 <p>{{item.quantity}}</p>

@@ -19,14 +19,14 @@
                     </div> 
                     {% if item.discounted_price %}
                         <div class="dis_price">
-                            <P class="pri">$ <span>{{item.price}}</span> {{item.discount}} % OFF</P>
-                            <p>$ {{item.discounted_price}}</p>
+                            <P class="pri">NGN <span>{{item.price}}</span> {{item.discount}} % OFF</P>
+                            <p>NGN {{item.discounted_price}}</p>
                         </div>
 
 
                     {% else %}
                         <div class="price">
-                            <P>$ {{item.price}}</P>
+                            <P>NGN {{item.price}}</P>
                         </div>
                     {% endif %}
                     
