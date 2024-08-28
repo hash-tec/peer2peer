@@ -1,17 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from  django.http import HttpResponse
-from django.contrib.auth.models import User
 from cart.models import Cart, CartItem
-from marketplace.models import CreateListing
-from user_management.models import CustomerUser
-from django.db.models import Count, F,Sum
-
+from .models import Payment, BuyerPay
+from django.db.models import F,Sum
+import uuid
 
 # Create your views here.
 
-class Payment(LoginRequiredMixin, TemplateView):
+class PaymentView(LoginRequiredMixin, TemplateView):
     template_name = "payments/payments.html"
     def get(self, request):
          user = Cart.objects.get(user=self.request.user)
@@ -21,8 +18,6 @@ class Payment(LoginRequiredMixin, TemplateView):
          username = self.request.user.username
          email = self.request.user.email
          address = self.request.user.address
-         print(full_name, address)
-         print(f"{email} dont know")
          return render(request, "payments/payments.html",{"fullname":full_name,
                                                           "email":email,
                                                           "address":address,
@@ -30,3 +25,13 @@ class Payment(LoginRequiredMixin, TemplateView):
                                                           "username": username})
         # def get(self, request):
         #     user = self.request.user.fullname
+
+class Payment_sucessful(TemplateView):
+     def get(self, request):
+         user, created = BuyerPay.objects.get_or_create(user=self.request.user)
+         cart_user = Cart.objects.get(user=self.request.user)
+         total_amount = CartItem.objects.filter(user=cart_user).aggregate( total=Sum(F('price') * F('quantity')))
+         txref = f"FLW-{uuid.uuid4()}"
+         purchased_history = Payment.objects.create(user = user,
+                                                    amount = total_amount["total"],
+                                                    transaction_id = txref )

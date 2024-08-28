@@ -1,7 +1,7 @@
-# from django.contrib import admin
-# from .models import Buy
+from django.contrib import admin
+from .models import Payment
 
-# # Register your models here.
-# class BuyAdmin(admin.ModelAdmin):
-#     list_display =("buyer", "item_name")
-# admin.site.register(Buy, BuyAdmin)
+# Register your models here.
+class PaymentAdmin(admin.ModelAdmin):
+    list_display =("user", "amount", "transaction_id","date_created")
+admin.site.register(Payment, PaymentAdmin)

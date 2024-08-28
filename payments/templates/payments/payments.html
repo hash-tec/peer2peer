@@ -50,13 +50,13 @@
           amount: {{total_amount.total}},
           currency: "NGN",
           payment_options: "card, banktransfer, ussd",
+          redirect_url: "payment_sus",
           meta: {
               source: "docs-inline-test",
               consumer_mac: "92a3-912ba-1192a",
           },
           customer: {
               email: "{{email}}",
-              phone_number: "08100000000",
               name: "{{fullname}}",
           },
           customizations: {
