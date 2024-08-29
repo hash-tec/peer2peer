@@ -36,4 +36,5 @@ class Payment_sucessful(TemplateView):
          purchased_history = Payment.objects.create(user = user,
                                                     amount = total_amount["total"],
                                                     transaction_id = txref )
+         print(purchased_history.user)
          return render(request, "payments/sucessful.html", )
