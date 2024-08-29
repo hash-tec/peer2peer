@@ -27,6 +27,7 @@ class PaymentView(LoginRequiredMixin, TemplateView):
         #     user = self.request.user.fullname
 
 class Payment_sucessful(TemplateView):
+     template_name = "payments/sucessful.html"
      def get(self, request):
          user, created = BuyerPay.objects.get_or_create(user=self.request.user)
          cart_user = Cart.objects.get(user=self.request.user)
@@ -35,3 +36,4 @@ class Payment_sucessful(TemplateView):
          purchased_history = Payment.objects.create(user = user,
                                                     amount = total_amount["total"],
                                                     transaction_id = txref )
+         return render(request, "payments/sucessful.html", )
