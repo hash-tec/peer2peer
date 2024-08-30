@@ -36,5 +36,6 @@ class Payment_sucessful(TemplateView):
          purchased_history = Payment.objects.create(user = user,
                                                     amount = total_amount["total"],
                                                     transaction_id = txref )
+         delete_cart = CartItem.objects.filter(user = cart_user).delete()
          print(purchased_history.user)
          return render(request, "payments/sucessful.html", )

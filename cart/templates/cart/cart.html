@@ -48,9 +48,11 @@
             </div>
                 <hr>
                 {% if unavailable_items %}
-                <p>Remove the unlisted item(s) </p>
+                    <p>Remove the unlisted item(s) </p>
+                {% elif not user_cart %}
+                    Add to cart
                 {% else %}
-                <div class="payment-button"><a  href="{% url 'payment' %}"><button> Proceed To Payment</button></a></div>
+                    <div class="payment-button"><a  href="{% url 'payment' %}"><button> Proceed To Payment</button></a></div>
                 {% endif %}
            
         </div>
