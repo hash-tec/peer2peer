@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Payment History{% endblock title %}
+{% block styling %}<link rel="stylesheet" href="{% static "payments/history.css" %}">{% endblock styling %}
+
+{% block content %}
+    <div class="container">
+        <h1>Payment History</h1>
+        <table class="payment-history-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+
+                    <th>Amount</th>
+                    <th>Timestamp</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tnx in txref  %}
+                    <tr>
+                        <td>{{tnx.transaction_id}}</td>
+
+                        <td>{{tnx.amount}}</td>
+                        <td>{{tnx.date_created}}</td>
+                        <td><span class="status success">Success</span></td>
+                    </tr>
+                {% endfor %}
+
+                {% comment %} <tr>
+                    <td>TXN67890</td>
+                    <td>August 29, 2024</td>
+                    <td>$250.00</td>
+                    <td><span class="status failed">Failed</span></td>
+                </tr>
+                <tr>
+                    <td>TXN13579</td>
+                    <td>August 28, 2024</td>
+                    <td>$50.00</td>
+                    <td><span class="status pending">Pending</span></td>
+                </tr> {% endcomment %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

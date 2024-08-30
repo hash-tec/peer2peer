@@ -26,7 +26,7 @@ class PaymentView(LoginRequiredMixin, TemplateView):
         # def get(self, request):
         #     user = self.request.user.fullname
 
-class Payment_sucessful(TemplateView):
+class PaymentSucessfulView(TemplateView):
      template_name = "payments/sucessful.html"
      def get(self, request):
          user, created = BuyerPay.objects.get_or_create(user=self.request.user)
@@ -39,3 +39,12 @@ class Payment_sucessful(TemplateView):
          delete_cart = CartItem.objects.filter(user = cart_user).delete()
          print(purchased_history.user)
          return render(request, "payments/sucessful.html", )
+     
+class PaymentHistoryView(TemplateView):
+     template_name = "payments/history.html"
+     def get_context_data(self, **kwargs):
+         context = super().get_context_data(**kwargs)
+         user = BuyerPay.objects.get(user = self.request.user)
+         context["txref"] = Payment.objects.filter(user = user)
+         return context
+     
