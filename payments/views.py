@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from cart.models import Cart, CartItem
-from .models import Payment, BuyerPay
+from .models import Payment, BuyerPay, Purchased_products
 from django.db.models import F,Sum
 import uuid
 
@@ -31,8 +31,20 @@ class PaymentSucessfulView(TemplateView):
      def get(self, request):
          user, created = BuyerPay.objects.get_or_create(user=self.request.user)
          cart_user = Cart.objects.get(user=self.request.user)
+         purchased_item= CartItem.objects.filter(user=cart_user)
          total_amount = CartItem.objects.filter(user=cart_user).aggregate( total=Sum(F('price') * F('quantity')))
          txref = f"FLW-{uuid.uuid4()}"
+         for item in purchased_item:
+               Purchased_products.objects.create(user = user,
+                                                 item_name = item.price,
+                                                 brand = item.brand,
+                                                 description = item.description,
+                                                 price = item.price,
+                                                 quantity = item.quantity,
+                                                 image = item.image
+                    
+               )
+       
          purchased_history = Payment.objects.create(user = user,
                                                     amount = total_amount["total"],
                                                     transaction_id = txref )
