@@ -10,7 +10,7 @@ from django.db.models import Count,Sum,F
 
 
 # Create your views here.
-class AvailableListingView(TemplateView):
+class AvailableListingView(LoginRequiredMixin,TemplateView):
     template_name = "marketplace/available-listing.html"
     def get_context_data(self, **kwargs):
         user, created = Cart.objects.get_or_create(user =self.request.user)
