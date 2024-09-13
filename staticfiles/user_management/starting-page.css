@@ -1,0 +1,29 @@
+body{
+    font-family: "Poppins", sans-serif;
+}
+.body-content{
+    height: 80vh;
+    color: #390067 ;
+}
+.first-section{
+    background-color: #390067;
+    height: 60%;
+}
+.title-text{
+    width: 90%;
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    margin: auto;
+    
+}
+.title-text p{
+    margin-left: 50px;
+    width: 40%;
+}
+.title-text img{
+    float: right;
+    width: 280px;
+    margin-left: 350px;
+}

@@ -1,0 +1,109 @@
+
+body{
+
+  font-family: "Poppins", sans-serif;
+ 
+}
+.nav-bar{
+
+margin-bottom: 60px;
+margin: auto;
+}
+.nav-bar nav {
+display: flex;
+margin: auto;
+width: 97%;
+margin-left: 20px;
+
+}
+
+
+
+
+nav .first-nav{
+
+width: 30%;
+margin-left: 15px;
+text-align: center;
+margin-top: 5px;
+
+display: inline-flex;
+}
+.logo-text{
+font-size: 15px;
+font-weight: 600;
+margin-top: 8px;
+font-family: "Playwrite FR Trad", cursive;
+}
+.logo-text a{
+text-decoration: none;
+color: #390067; 
+}
+.hash-text{
+margin-left: 20px;
+margin-top: 17px;
+font-size: 18.72px;
+font-weight: 900px;
+color: #390067;
+}
+nav .second-nav{
+width: 60%;
+margin-left: 20px;
+
+
+}
+
+nav .second-nav ul {
+display: flex;
+font-size: 20px;
+
+}
+
+nav .second-nav ul li {
+list-style: none;
+margin: auto;
+}
+
+nav .second-nav ul li a{
+text-decoration: none;
+color: gray;
+font-size: 15px;
+}
+
+.second-nav ul li a:hover{
+text-decoration: underline;
+transition: 0.5s;
+font-weight: 700;
+color:  #390067;
+cursor: pointer;
+}
+
+
+nav .third-nav {
+display: flex;
+width: 27%;
+margin-left: 70px;
+
+}
+nav .third-nav button{
+background-color: white; 
+ border: 2px solid #390067;
+ color:#390067 ;
+ width: 70px;
+ height: 25px;
+ border-radius: 5px;
+ margin-top: 22px;
+ margin-left: 30px;
+ font-size: 13px;
+ font-weight: 400;
+ cursor: pointer;
+}
+
+.third-nav :hover button{
+background-color:  #390067;
+color: white;
+transition: 0.5s;
+}
+.login{
+margin-left: 5px;
+}

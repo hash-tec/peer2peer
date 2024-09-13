@@ -1,0 +1,59 @@
+.marketplace-includenav{
+   
+    width: 90%;
+    margin: auto;
+}
+
+.first{
+    display: inline-block;
+
+    margin-right: 38%;
+    width: 30%;
+}
+.logo-text{
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    font-family: "Playwrite FR Trad", cursive;
+    font-optical-sizing: auto;
+    margin-left: 50px;
+   }
+.logo-text a{
+    text-decoration: none;
+    color: #390067; 
+   }
+.second {
+    display: inline-block;
+    width: 30%;
+   
+    
+    }
+.second button{
+    background-color: white; 
+     border: 2px solid #390067;
+     color:#390067 ;
+     width: 70px;
+     height: 25px;
+     border-radius: 5px;
+     margin-top: 22px;
+     margin-left: 30px;
+     font-size: 13px;
+     font-weight: 400;
+    }
+    
+.second :hover button{
+    background-color:  #390067;
+    color: white;
+    transition: 0.5s;
+    }
+    .login{
+    margin-left: 5px;
+    }
+
+.cart{
+    display: inline-block;
+}
+
+.orders{
+    display: inline-block;
+}
