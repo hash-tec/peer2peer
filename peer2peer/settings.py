@@ -66,7 +66,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-hashtec-peer2peer-qd57eqpfrol.ws-eu115.gitpod.io",
+    "https://peer2peer-production-90d3.up.railway.app",
 ]
 
 
