@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from cart.models import Cart, CartItem
@@ -52,8 +52,7 @@ class PaymentSucessfulView(LoginRequiredMixin, TemplateView):
                                                     transaction_id = txref )
          # The items in the cart will be deleted if the payment if the payment is suscessful
          delete_cart = CartItem.objects.filter(user = cart_user).delete()
-         print(purchased_history.user)
-         return render(request, "payments/history.html", )
+         return redirect("payment-history")
      
 class PaymentHistoryView(LoginRequiredMixin, TemplateView):
      template_name = "payments/history.html"
