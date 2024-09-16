@@ -28,7 +28,6 @@ class PaymentView(LoginRequiredMixin, TemplateView):
         #     user = self.request.user.fullname
 
 class PaymentSucessfulView(LoginRequiredMixin, TemplateView):
-     template_name = "payments/sucessful.html"
      def get(self, request):
          user, created = BuyerPay.objects.get_or_create(user=self.request.user)
          cart_user = Cart.objects.get(user=self.request.user)
@@ -54,7 +53,7 @@ class PaymentSucessfulView(LoginRequiredMixin, TemplateView):
          # The items in the cart will be deleted if the payment if the payment is suscessful
          delete_cart = CartItem.objects.filter(user = cart_user).delete()
          print(purchased_history.user)
-         return render(request, "payments/sucessful.html", )
+         return render(request, "payments/history.html", )
      
 class PaymentHistoryView(LoginRequiredMixin, TemplateView):
      template_name = "payments/history.html"
