@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'cloudinary',
-    'cloudinary_storage'
+    'cloudinary_storage',
     'user_management',
     'marketplace',
     'cart',
