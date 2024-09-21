@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'cloudinary',
+    'cloudinary_storage'
     'user_management',
     'marketplace',
     'cart',
@@ -154,6 +156,14 @@ AUTH_USER_MODEL = "user_management.CustomerUser"
 FLUTTERWAVE_PUBLIC_KEY = 'your-public-key'
 FLUTTERWAVE_SECRET_KEY = 'your-secret-key'
 FLUTTERWAVE_ENCRYPTION_KEY = 'your-encryption-key'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 LOGIN_URL = 'login'
