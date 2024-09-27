@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='createlisting',
             name='discount',
-            field=models.DecimalField(blank=True, decimal_places=0, max_digits=10000000000000000, null=True),
+            field=models.DecimalField(blank=True, decimal_places=0, max_digits=10, null=True),
         ),
     ]

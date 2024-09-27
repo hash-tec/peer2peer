@@ -17,11 +17,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='createlisting',
             name='discounted_price',
-            field=models.DecimalField(decimal_places=0, max_digits=1000000000000000, null=True),
+            field=models.DecimalField(decimal_places=0, max_digits=10, null=True),
         ),
         migrations.AlterField(
             model_name='createlisting',
             name='discount',
-            field=models.DecimalField(decimal_places=0, max_digits=100, null=True),
+            field=models.DecimalField(decimal_places=0, max_digits=10, null=True),
         ),
     ]
